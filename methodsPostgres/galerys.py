@@ -52,8 +52,7 @@ def infoGalera(tupleValues):
             {
                 'idGalera': row[0],
                 'existence': row[1],
-                'typeChicken': row[2],
-                'idWorker': row[3]
+                'typeChicken': row[2]
             }
             for row in rows
         ]
