@@ -14,7 +14,7 @@ def obtainGaleras(tupleValues):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-            Select id_galera, existencia, tipo_pollo, id_trabajador from galera where id_lote = %s;
+            Select id_galera, existencia, tipo_pollo from galera where id_lote = %s;
             ''', tupleValues)
         rows = cur.fetchall()
 
@@ -22,8 +22,7 @@ def obtainGaleras(tupleValues):
             {
                 'idGalera': row[0],
                 'existence': row[1],
-                'typeChicken': row[2],
-                'idWorker': row[3]
+                'typeChicken': row[2]
             }
             for row in rows
         ]
