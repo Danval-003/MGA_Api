@@ -14,4 +14,4 @@ def obtainLotes():
 
     infoTupla = tuple([res['dpiTrabajador']])
 
-    return obtainLotes(infoTupla)
+    return obtainLote(infoTupla)
