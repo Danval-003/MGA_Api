@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lotes Documentacion</title>
+</head>
+<body>
+
+<h2>Obtener Lotes</h2>
+<p><strong>URL:</strong> /lObtain</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Parámetros:</strong></p>
+<ul>
+  <li><strong>dpiTrabajador</strong> (requerido): DPI del trabajador.</li>
+</ul>
+<p><strong>Respuesta:</strong> Devuelve los lotes relacionados con el DPI del trabajador especificado en formato JSON.</p>
+<h3>Ejemplo de solicitud:</h3>
+<code>
+  POST /lObtain<br>
+  {<br>
+  &nbsp;&nbsp;"dpiTrabajador": "1234567890123"<br>
+  }
+</code>
+<h3>Ejemplo de respuesta:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"error": 202,<br>
+  &nbsp;&nbsp;"message": "Good Job",<br>
+  &nbsp;&nbsp;"data": [<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idLote": 1<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idLote": 2<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  &nbsp;&nbsp;]<br>
+  }
+</code>
+</body>
+</html>
