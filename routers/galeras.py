@@ -17,7 +17,7 @@ def obtainG():
 
 
 @galery_bp.route('/galeras', methods=['GET'])
-def obtainGaleras():
+def obtainGaleriars():
     res = request.get_json()
     if 'numLote' not in res:
         return make_response(jsonify(
