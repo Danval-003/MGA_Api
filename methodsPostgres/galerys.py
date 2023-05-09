@@ -44,7 +44,7 @@ def infoGalera(tupleValues):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-            Select id_galera, existencia, tipo_pollo, id_trabajador from galera where id_lote = %s and numero = %s;
+            Select id_galera, existencia, tipo_pollo from galera where id_lote = %s and numero = %s;
             ''', tupleValues)
         rows = cur.fetchall()
 
