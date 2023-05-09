@@ -4,7 +4,7 @@ from flask import jsonify, make_response
 from extensions.connection import connect
 
 
-def obtainGaleras(tupleValues):
+def obtainGaleras(id_lote):
     status = {
         'error': 202,
         'message': '',
@@ -15,7 +15,7 @@ def obtainGaleras(tupleValues):
         cur = conn.cursor()
         cur.execute('''
             Select id_galera, existencia, tipo_pollo from galera where id_lote = %s;
-            ''', tupleValues)
+            ''', (id_lote,))
         rows = cur.fetchall()
 
         status['data'] = [

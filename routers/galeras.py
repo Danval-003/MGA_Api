@@ -23,6 +23,6 @@ def obtainGaleras():
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_lote'}, 404))
 
-    infoTupla = tuple([res['numLote']])
+    infoTupla = res['numLote']
 
     return obtainGaleras(infoTupla)
