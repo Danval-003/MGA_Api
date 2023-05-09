@@ -18,7 +18,7 @@ def makeRegister(tupleValues):
             ''', tupleValues)
         status['message'] = 'Good Job'
     except psycopg2.Error as e:
-        status['message'] = e
+        status['message'] = str(e)
         status['error'] = 404
 
     return make_response(jsonify(status), status[404])

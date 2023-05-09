@@ -11,6 +11,6 @@ def obtainTriremes():
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_galera y num_lote'}, 404))
 
-    infoTupla = tuple([res['numGalera'], res['numLote']])
+    infoTupla = tuple([res['numLote'], res['numGalera']])
 
     return obtainGaleras(infoTupla)

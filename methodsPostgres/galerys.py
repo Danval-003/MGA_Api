@@ -32,7 +32,5 @@ def obtainGaleras(tupleValues):
         status['message'] = str(e)
         status['error'] = 404
 
-    res = jsonify({'hola': 'mundo'})
-
     return make_response(jsonify(status), status['error'])
 
