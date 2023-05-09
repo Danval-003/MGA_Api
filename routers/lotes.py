@@ -5,7 +5,7 @@ from methodsPostgres.lotes import *
 lotes_bp = Blueprint('lotes', __name__)
 
 
-@lotes_bp.route('/lObtain', methods=['GET'])
+@lotes_bp.route('/lObtain', methods=['POST'])
 def obtainLotes():
     res = request.get_json()
     if 'dpiTrabajador' not in res:

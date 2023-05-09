@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    code {
+      display: block;
+      background-color: #f5f5f5;
+      padding: 10px;
+      font-family: Consolas, monospace;
+      margin-bottom: 10px;
+    }
+    ul {
+      margin-bottom: 10px;
+      margin-top: 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>API Galería</h1>
+  <h2>Obtener Información de una Galería</h2>
+  <p><strong>URL:</strong> /gObtain</p>
+  <p><strong>Método:</strong> POST</p>
+  <p><strong>Parámetros:</strong></p>
+  <ul>
+    <li><strong>numGalera</strong> (requerido): Número de la galera.</li>
+    <li><strong>numLote</strong> (requerido): Número del lote.</li>
+  </ul>
+  <p><strong>Respuesta:</strong> Devuelve la información de la galera especificada en formato JSON.</p>
+  <h3>Ejemplo de solicitud:</h3>
+  <code>
+    POST /gObtain<br>
+    {<br>
+    &nbsp;&nbsp;"numGalera": 123,<br>
+    &nbsp;&nbsp;"numLote": 456<br>
+    }
+  </code>
+  <h3>Ejemplo de respuesta:</h3>
+  <code>
+    {<br>
+    &nbsp;&nbsp;"error": 202,<br>
+    &nbsp;&nbsp;"message": "Good Job",<br>
+    &nbsp;&nbsp;"data": [<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 1,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 100,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo A"<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 2,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 200,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo B"<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+    &nbsp;&nbsp;]<br>
+    }
+  </code>
+  <h2>Obtener Galerías</h2>
+  <p><strong>URL:</strong> /galeras</p>
+  <p><strong>Método:</strong> POST</p>
+  <p><strong>Parámetros:</strong></p>
+  <ul>
+    <li><strong>numLote</strong> (requerido): Número del lote.</li>
+  </ul>
+  <p><strong>Respuesta:</strong> Devuelve las galerías relacionadas con el número de lote especificado en formato JSON.</p>
+<h3>Ejemplo de solicitud:</h3>
+  <code>
+    POST /galeras<br>
+    {<br>
+    &nbsp;&nbsp;"numLote": 456<br>
+    }
+  </code>
+  <h3>Ejemplo de respuesta:</h3>
+  <code>
+    {<br>
+    &nbsp;&nbsp;"error": 202,<br>
+    &nbsp;&nbsp;"message": "Good Job",<br>
+    &nbsp;&nbsp;"data": [<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 1,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 100,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo A"<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 2,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 200,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo B"<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+    &nbsp;&nbsp;]<br>
+    }
+  </code>
+</body>
+</html>

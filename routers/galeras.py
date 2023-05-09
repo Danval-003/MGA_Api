@@ -4,7 +4,7 @@ from methodsPostgres.galerys import *
 galery_bp = Blueprint('galery', __name__)
 
 
-@galery_bp.route('/gObtain', methods=['GET'])
+@galery_bp.route('/gObtain', methods=['POST'])
 def obtainG():
     res = request.get_json()
     if 'numGalera' not in res or 'numLote' not in res:
@@ -16,7 +16,7 @@ def obtainG():
     return infoGalera(infoTupla)
 
 
-@galery_bp.route('/galeras', methods=['GET'])
+@galery_bp.route('/galeras', methods=['POST'])
 def obtainGaleriars():
     res = request.get_json()
     if 'numLote' not in res:
