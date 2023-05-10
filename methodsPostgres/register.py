@@ -12,7 +12,7 @@ def makeRegister(tupleValues):
         'data': []
     }
     try:
-        conn = connect()
+        conn = connect()  # Establish a connection to your database
         cur = conn.cursor()
         cur.execute('''
             SELECT register(%s, %s, %s, %s, %s)
@@ -22,5 +22,4 @@ def makeRegister(tupleValues):
         status['message'] = str(e)
         status['error'] = 404
 
-    return make_response(jsonify(status), status[404])
-
+    return make_response(jsonify(status), status['error'])
