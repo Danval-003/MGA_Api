@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .example-section {
+            margin-top: 20px;
+        }
+
+        .example-section code {
+            display: block;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .response-section {
+            margin-top: 20px;
+        }
+
+        .response-section code {
+            display: block;
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>API Documentation</h2>
+
+    <h3>Route: /makeRegister</h3>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Description:</strong> Registers a new element in the database.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><strong>cantidadAlimento</strong> (required): Amount of food.</li>
+        <li><strong>decesos</strong> (required): Number of deaths.</li>
+        <li><strong>observaciones</strong> (required): Observations of the register.</li>
+        <li><strong>idGalera</strong> (required): ID of the galera.</li>
+        <li><strong>pesado</strong> (required): Boolean value indicating if the register has been weighed.</li>
+    </ul>
+    <p><strong>Response:</strong> Returns a JSON message indicating the result of the operation.</p>
+
+    <div class="example-section">
+        <h4>Example Request:</h4>
+        <code>
+            POST /makeRegister<br>
+            {<br>
+            &nbsp;&nbsp;"cantidadAlimento": 500,<br>
+            &nbsp;&nbsp;"decesos": 2,<br>
+            &nbsp;&nbsp;"observaciones": "Some observations",<br>
+            &nbsp;&nbsp;"idGalera": 123,<br>
+            &nbsp;&nbsp;"pesado": true<br>
+            }
+        </code>
+    </div>
+
+    <div class="response-section">
+        <h4>Example Response:</h4>
+        <code>
+            {<br>
+            &nbsp;&nbsp;"error": 202,<br>
+            &nbsp;&nbsp;"message": "Good Job",<br>
+            &nbsp;&nbsp;"data": []<br>
+            }
+        </code>
+    </div>
+</body>
+</html>

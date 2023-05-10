@@ -11,3 +11,8 @@ def docGaleras():
 @doc_bp.route('/lotesDoc', methods=['GET'])
 def docLotes():
     return render_template('lotesDoc.html')
+
+
+@doc_bp.route('/registerDoc', methods=['GET'])
+def docRegister():
+    return render_template('registerDoc.html')

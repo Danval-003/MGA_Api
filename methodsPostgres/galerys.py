@@ -14,11 +14,7 @@ def obtainGaleras(id_lote):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-                select g.id_galera, numero, id_lote, tipo_pollo, ca, existencia
-                from galera g
-                left outer join registro r on g.id_galera = r.id_galera
-                where id_lote = %s
-                order by fecha desc;
+        select * from get_galeries(%s);
             ''', (id_lote,))
         rows = cur.fetchall()
 
