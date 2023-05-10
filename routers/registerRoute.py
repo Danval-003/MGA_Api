@@ -11,7 +11,10 @@ def makeRegister():
     if 'cantidadAlimento' not in res or 'decesos' not in res or 'observaciones' not in res or 'idGalera' not in res or 'pesado' not in res:
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_galera y num_lote'}, 404))
+    lista = []
+    for i in parameters:
+        lista.append(res[i])
 
-    infoTupla = tuple([res[r] for r in parameters])
+    infoTupla = tuple(lista)
 
     return makeRegister(infoTupla)

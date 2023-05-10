@@ -5,6 +5,7 @@ from extensions.connection import connect
 
 
 def makeRegister(tupleValues):
+    print(tupleValues)
     status = {
         'error': 202,
         'message': '',
