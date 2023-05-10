@@ -5,7 +5,7 @@ register_bp = Blueprint('register', __name__)
 
 
 @register_bp.route('/makeRegister', methods=['POST'])
-def makeRegister():
+def makeRegist():
     res = request.get_json()
     parameters = ['cantidadAlimento', 'decesos', 'observaciones', 'idGalera', 'pesado']
     if 'cantidadAlimento' not in res or 'decesos' not in res or 'observaciones' not in res or 'idGalera' not in res or 'pesado' not in res:
