@@ -14,15 +14,22 @@ def obtainGaleras(id_lote):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-            Select id_galera, existencia, tipo_pollo from galera where id_lote = %s;
+                select g.id_galera, numero, id_lote, tipo_pollo, ca, existencia
+                from galera g
+                left outer join registro r on g.id_galera = r.id_galera
+                where id_lote = %s
+                order by fecha desc;
             ''', (id_lote,))
         rows = cur.fetchall()
 
         status['data'] = [
             {
                 'idGalera': row[0],
-                'existence': row[1],
-                'typeChicken': row[2]
+                'existence': row[5],
+                'typeChicken': row[3],
+                'numeroGalera': row[1],
+                'ca': row[4],
+                'idLote': row[5]
             }
             for row in rows
         ]
