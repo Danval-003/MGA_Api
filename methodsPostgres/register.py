@@ -15,8 +15,9 @@ def makeRegister(tupleValues):
         conn = connect()  # Establish a connection to your database
         cur = conn.cursor()
         cur.execute('''
-            SELECT register(%s, %s, %s, %s, %s)
+            SELECT * from register(%s, %s, %s, %s, %s)
             ''', tupleValues)
+        conn.commit()
         status['message'] = 'Good Job'
     except psycopg2.Error as e:
         status['message'] = str(e)
