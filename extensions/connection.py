@@ -6,7 +6,7 @@ def connect(user='postgres', password='123456'):
     # Se le manda la informacion para realizar la coneccion
     conn = psycopg2.connect(
         host="localhost",
-        database="galeryDataBase",
+        database="postgres",
         user=user,
         password=password
     )
