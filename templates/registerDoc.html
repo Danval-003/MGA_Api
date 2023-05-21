@@ -99,5 +99,46 @@
             }
         </code>
     </div>
+
+    <h3>Route: /obtainRegistersDate</h3>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Description:</strong> Retrieves registers for a specific date from the database.</p>
+    <p><strong>Parameters:</strong></p>
+    <ul>
+        <li><strong>date</strong> (required): Date for which to retrieve the registers.</li>
+    </ul>
+    <p><strong>Response:</strong> Returns a JSON message containing the retrieved registers.</p>
+
+    <div class="example-section">
+        <h4>Example Request:</h4>
+        <code>
+            POST /obtainRegistersDate<br>
+            {<br>
+            &nbsp;&nbsp;"date": "2023-05-21"<br>
+            }
+        </code>
+    </div>
+
+    <div class="response-section">
+        <h4>Example Response:</h4>
+        <code>
+            {<br>
+            &nbsp;&nbsp;"error": 202,<br>
+            &nbsp;&nbsp;"message": "Good Job",<br>
+            &nbsp;&nbsp;"data": [<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cantidadAlimento": 500,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"decesos": 2,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"observaciones": "Some observations",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fecha": "2023-05-21",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ca": null,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": null,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idRegistro": null,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pesoMedido": null<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            &nbsp;&nbsp;]<br>
+            }
+        </code>
+    </div>
 </body>
 </html>
