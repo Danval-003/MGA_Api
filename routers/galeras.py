@@ -26,3 +26,4 @@ def obtainGaleriars():
     infoTupla = res['numLote']
 
     return obtainGaleras(infoTupla)
+

@@ -18,3 +18,14 @@ def makeRegist():
     infoTupla = tuple(lista)
 
     return makeRegister(infoTupla)
+
+
+@register_bp.route('/obtainRegistersDate', methods=['POST'])
+def obtainRegisterDate():
+    res = request.get_json()
+    parameters = ['date']
+    if 'date' not in res:
+        return make_response(jsonify(
+            {'message': 'Error al colocar los datos debias mandar como parametro date'}, 404))
+    return obtainRegisters(res['date'])
+

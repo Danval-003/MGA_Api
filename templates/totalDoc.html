@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Documentación de API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #666;
+      margin-top: 20px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    .endpoint {
+      margin-bottom: 30px;
+    }
+
+    .endpoint h3 {
+      color: #555;
+    }
+
+    .endpoint p {
+      margin-bottom: 5px;
+    }
+
+    .database-info {
+      margin-top: 50px;
+    }
+
+    .database-info h2 {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .database-info p {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Documentación de la API</h1>
+
+  <div class="endpoint">
+    <h2>Registro de Usuarios</h2>
+    <h3>Ruta:</h3>
+    <p>http://3.22.42.192/api/registerDoc</p>
+  </div>
+
+  <div class="endpoint">
+    <h2>Listado de Lotes</h2>
+    <h3>Ruta:</h3>
+    <p>http://3.22.42.192/api/lotesDoc</p>
+  </div>
+
+  <div class="endpoint">
+    <h2>Listado de Galeras</h2>
+    <h3>Ruta:</h3>
+    <p>http://3.22.42.192/api/galerasDoc</p>
+  </div>
+
+  <div class="database-info">
+    <h2>Información de la base de datos</h2>
+    <h3>Host:</h3>
+    <p>database-1.c5xesezrpxni.us-east-2.rds.amazonaws.com</p>
+
+    <h3>Usuario:</h3>
+    <p>postgres</p>
+
+    <h3>Contraseña:</h3>
+      <input id="clave" type="password" placeholder="Ingrese la clave">
+  <button onclick="verificarClave()">Verificar</button>
+  <p id="mensaje" style="display: none;">OrtalizasDelHuerto22</p>
+
+  <script>
+    function verificarClave() {
+      var claveIngresada = document.getElementById('clave').value;
+      var claveCorrecta = "jkRiolu2390"; // Clave correcta
+
+      if (claveIngresada === claveCorrecta) {
+        document.getElementById('mensaje').style.display = 'block';
+      }
+    }
+  </script>
+  </div>
+</body>
+</html>
