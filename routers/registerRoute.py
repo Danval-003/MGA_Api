@@ -27,13 +27,13 @@ def obtainRegisterDate():
          from registro inner join galera g on g.id_galera = registro.id_galera"""
 
     if 'date' in res or 'idTrabajador' in res or 'idLote' in res:
-        query = query + ' where '
+        query = query + ' where'
         if 'date' in res:
-            query = query + "fecha > '" + res['date'] + " 0:0:0.0' and  fecha < '" + res['date'] + " 23:59:59.0' and"
+            query = query + " fecha > '" + res['date'] + " 0:0:0.0' and  fecha < '" + res['date'] + " 23:59:59.0' and"
         if 'idTrabajador' in res:
-            query = query + "id_trabajador = '%s' and" % (res['idTrabajador'],)
+            query = query + " id_trabajador = '%s' and" % (res['idTrabajador'],)
         if 'idLote' in res:
-            query = query + "id_lote = '%s' and" % (res['idTrabajador'],)
+            query = query + " id_lote = '%s' and" % (res['idTrabajador'],)
         query = query[:-3]
     return obtainRegisters(query)
 
