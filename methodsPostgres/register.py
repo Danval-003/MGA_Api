@@ -26,7 +26,7 @@ def makeRegister(tupleValues):
     return make_response(jsonify(status), status['error'])
 
 
-def obtainRegisters(date):
+def obtainRegisters(query):
     status = {
         'error': 202,
         'message': '',
@@ -35,8 +35,7 @@ def obtainRegisters(date):
     try:
         conn = connect()  # Establish a connection to your database
         cur = conn.cursor()
-        cur.execute("""select cantidad_alimento, decesos, observaciones, fecha, ca, id_galera, id_registro, pesado
-         from registro where fecha > '"+date+" 0:0:0.0' and  fecha < '"+date+" 23:59:59.0' """)
+        cur.execute(query)
         rows = cur.fetchall()
         status['data'] = [
             {
@@ -48,7 +47,32 @@ def obtainRegisters(date):
                 'idGalera': row[5],
                 'idRegistro': row[6],
                 'pesoMedido': row[7]
+            }
+            for row in rows
+        ]
+        status['message'] = 'Good Job'
+    except psycopg2.Error as e:
+        status['message'] = str(e)
+        status['error'] = 404
 
+    return make_response(jsonify(status), status['error'])
+
+
+def obtainTrabajadores():
+    status = {
+        'error': 202,
+        'message': '',
+        'data': []
+    }
+    try:
+        conn = connect()  # Establish a connection to your database
+        cur = conn.cursor()
+        cur.execute('select id_trabajador, nombre from trabajadores;')
+        rows = cur.fetchall()
+        status['data'] = [
+            {
+                'idTrabajador': row[0],
+                'nombre': row[1]
             }
             for row in rows
         ]

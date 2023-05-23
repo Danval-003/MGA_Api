@@ -60,85 +60,135 @@
     </style>
 </head>
 <body>
-    <h2>API Documentation</h2>
-
-    <h3>Route: /makeRegister</h3>
+        <h3>Route: /makeRegister</h3>
     <p><strong>Method:</strong> POST</p>
     <p><strong>Description:</strong> Registers a new element in the database.</p>
     <p><strong>Parameters:</strong></p>
     <ul>
-        <li><strong>cantidadAlimento</strong> (required): Amount of food.</li>
-        <li><strong>decesos</strong> (required): Number of deaths.</li>
-        <li><strong>observaciones</strong> (required): Observations of the register.</li>
-        <li><strong>idGalera</strong> (required): ID of the galera.</li>
-        <li><strong>pesado</strong> (required): Boolean value indicating if the register has been weighed.</li>
+        <li><strong>cantidadAlimento</strong> (required): Amount of food (type: double precision).</li>
+        <li><strong>decesos</strong> (required): Number of deaths (type: integer).</li>
+        <li><strong>observaciones</strong> (required): Observations of the register (type: text).</li>
+        <li><strong>fecha</strong> (required): Date of the register (format: "YYYY-MM-DD HH:MM:SS", type: timestamp).</li>
+        <li><strong>ca</strong> (required): CA value (type: double precision).</li>
+        <li><strong>idGalera</strong> (required): ID of the galera (type: varchar).</li>
+        <li><strong>pesado</strong> (required): Indicator if the register has been weighed (type: double precision).</li>
+        <li><strong>idTrabajador</strong> (optional): ID of the worker to filter the registers (type: varchar).</li>
+        <li><strong>idLote</strong> (optional): ID of the lot to filter the registers (type: integer).</li>
     </ul>
     <p><strong>Response:</strong> Returns a JSON message indicating the result of the operation.</p>
 
+    <!-- Ejemplo 1 -->
     <div class="example-section">
-        <h4>Example Request:</h4>
-        <code>
-            POST /makeRegister<br>
-            {<br>
-            &nbsp;&nbsp;"cantidadAlimento": 500,<br>
-            &nbsp;&nbsp;"decesos": 2,<br>
-            &nbsp;&nbsp;"observaciones": "Some observations",<br>
-            &nbsp;&nbsp;"idGalera": 123,<br>
-            &nbsp;&nbsp;"pesado": true<br>
-            }
-        </code>
+        <h4>Example 1: Register a new element</h4>
+        <p>Endpoint: <code>/makeRegister</code></p>
+        <p>Request:</p>
+        <pre><code>
+{
+    "cantidadAlimento": 12.5,
+    "decesos": 2,
+    "observaciones": "Some observations",
+    "fecha": "2023-05-22 15:30:00",
+    "ca": 3.7,
+    "idGalera": "GAL-001",
+    "pesado": 1.2
+}
+        </code></pre>
+        <p>Response:</p>
+        <pre><code>
+{
+    "message": "Element registered successfully."
+}
+        </code></pre>
     </div>
 
-    <div class="response-section">
-        <h4>Example Response:</h4>
-        <code>
-            {<br>
-            &nbsp;&nbsp;"error": 202,<br>
-            &nbsp;&nbsp;"message": "Good Job",<br>
-            &nbsp;&nbsp;"data": []<br>
-            }
-        </code>
-    </div>
-
-    <h3>Route: /obtainRegistersDate</h3>
-    <p><strong>Method:</strong> POST</p>
-    <p><strong>Description:</strong> Retrieves registers for a specific date from the database.</p>
-    <p><strong>Parameters:</strong></p>
-    <ul>
-        <li><strong>date</strong> (required): Date for which to retrieve the registers.</li>
-    </ul>
-    <p><strong>Response:</strong> Returns a JSON message containing the retrieved registers.</p>
-
+    <!-- Ejemplo 2 -->
     <div class="example-section">
-        <h4>Example Request:</h4>
-        <code>
-            POST /obtainRegistersDate<br>
-            {<br>
-            &nbsp;&nbsp;"date": "2023-05-21"<br>
-            }
-        </code>
+        <h4>Example 2: Register a new element with filter by worker ID and lot ID</h4>
+        <p>Endpoint: <code>/makeRegister</code></p>
+        <p>Request:</p>
+        <pre><code>
+{
+    "cantidadAlimento": 10.0,
+    "decesos": 1,
+    "observaciones": "Another observation",
+    "fecha": "2023-05-22 16:45:00",
+    "ca": 4.2,
+    "idGalera": "GAL-002",
+    "pesado": 0.8,
+    "idTrabajador": "WRK-003",
+    "idLote": 12345
+}
+        </code></pre>
+        <p>Response:</p>
+        <pre><code>
+{
+    "message": "Element registered successfully."
+}
+        </code></pre>
     </div>
 
-    <div class="response-section">
-        <h4>Example Response:</h4>
-        <code>
-            {<br>
-            &nbsp;&nbsp;"error": 202,<br>
-            &nbsp;&nbsp;"message": "Good Job",<br>
-            &nbsp;&nbsp;"data": [<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cantidadAlimento": 500,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"decesos": 2,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"observaciones": "Some observations",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fecha": "2023-05-21",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ca": null,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": null,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idRegistro": null,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pesoMedido": null<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-            &nbsp;&nbsp;]<br>
-            }
-        </code>
-    </div>
+<h3>Route: /obtainRegistersDate</h3>
+<p><strong>Method:</strong> POST</p>
+<p><strong>Description:</strong> Retrieves registers from the database based on optional filters.</p>
+<p><strong>Request Body:</strong> Requires a JSON object with the following optional fields:</p>
+<ul>
+    <li><strong>date</strong>: Filter registers by date (format: "YYYY-MM-DD", type: string).</li>
+    <li><strong>idTrabajador</strong>: Filter registers by worker ID (type: string).</li>
+    <li><strong>idLote</strong>: Filter registers by lot ID (type: string).</li>
+</ul>
+<p><strong>Response:</strong> Returns a JSON object with the following structure:</p>
+<pre><code>
+{
+    "error": 202,
+    "message": "Good Job",
+    "data": [
+        {
+            "cantidadAlimento": 12.5,
+            "decesos": 2,
+            "observaciones": "Some observations",
+            "fecha": "2023-05-22 15:30:00",
+            "ca": 3.7,
+            "idGalera": "GAL-001",
+            "idRegistro": 1,
+            "pesoMedido": 1.2
+        },
+        {
+            "cantidadAlimento": 10.0,
+            "decesos": 1,
+            "observaciones": "Another observation",
+            "fecha": "2023-05-22 16:45:00",
+            "ca": 4.2,
+            "idGalera": "GAL-002",
+            "idRegistro": 2,
+            "pesoMedido": 0.8
+        },
+        ...
+    ]
+}
+</code></pre>
+
+<h3>Route: /obtainTrabajadores</h3>
+<p><strong>Method:</strong> GET</p>
+<p><strong>Description:</strong> Retrieves information about workers from the database.</p>
+<p><strong>Response:</strong> Returns a JSON object with the following structure:</p>
+<pre><code>
+{
+    "error": 202,
+    "message": "Good Job",
+    "data": [
+        {
+            "idTrabajador": "TRAB-001",
+            "nombre": "John Doe"
+        },
+        {
+            "idTrabajador": "TRAB-002",
+            "nombre": "Jane Smith"
+        },
+        ...
+    ]
+}
+</code></pre>
+
+
 </body>
 </html>
