@@ -33,7 +33,7 @@ def obtainRegisterDate():
         if 'idTrabajador' in res:
             query = query + " id_trabajador = '%s' and" % (res['idTrabajador'],)
         if 'idLote' in res:
-            query = query + " id_lote = '%s' and" % (res['idTrabajador'],)
+            query = query + " id_lote = %s and" % (res['idTrabajador'],)
         query = query[:-3]
     return obtainRegisters(query)
 
