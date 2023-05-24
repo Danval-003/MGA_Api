@@ -15,7 +15,7 @@ def do_login(password, user):
         passEncoding = encoding(password)
         con = connect()
         cur = con.cursor()
-        cur.execute('select * from do_login(%s, %s);', (user, passEncoding))
+        cur.execute('select * from do_login(%s, %s)', (user, str(passEncoding)))
         rows = cur.fetchall()
 
         status['data'] = [
