@@ -1,6 +1,5 @@
 import hashlib
 
-
 def encoding(password):
     hash_object = hashlib.sha256()
 
