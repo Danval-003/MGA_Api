@@ -5,7 +5,7 @@ from extensions.hashPassword import encoding
 from extensions.connection import connect
 
 
-def do_login(password, user):
+def do_login(user, password):
     status = {
         'error': 202,
         'message': '',
