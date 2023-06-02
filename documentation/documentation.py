@@ -16,3 +16,8 @@ def docLotes():
 @doc_bp.route('/registerDoc', methods=['GET'])
 def docRegister():
     return render_template('registerDoc.html')
+
+
+@doc_bp.route('/loginDoc', methods=['GET'])
+def docLogin():
+    return render_template('loginDoc.html')
