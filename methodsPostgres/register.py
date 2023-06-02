@@ -47,7 +47,8 @@ def obtainRegisters(query):
                 'idGalera': row[5],
                 'idRegistro': row[6],
                 'pesoMedido': row[7],
-                'edadGalera': row[8]
+                'edadGalera': row[8],
+                'tipoPollo': row[9]
             }
             for row in rows
         ]
