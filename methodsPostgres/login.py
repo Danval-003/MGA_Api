@@ -5,7 +5,7 @@ from extensions.hashPassword import encoding
 from extensions.connection import connect
 
 
-def do_login(user, password):
+def do_login(user, password, rol):
     status = {
         'error': 202,
         'message': '',
@@ -15,7 +15,7 @@ def do_login(user, password):
         passEncoding = encoding(password)
         con = connect()
         cur = con.cursor()
-        cur.execute('select * from do_login(%s, %s)', (user, str(passEncoding)))
+        cur.execute('select * from do_login(%s, %s, %s)', (user, str(passEncoding), rol))
         rows = cur.fetchall()
 
         status['data'] = [
