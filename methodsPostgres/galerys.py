@@ -47,8 +47,8 @@ def infoGalera(tupleValues):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-            Select id_galera, existencia, tipo_pollo, EXTRACT(days FROM age(CURRENT_DATE::timestamp with time zone, inicio_fecha::timestamp with time zone)) AS edad  
-            from galera where id_lote = %s and numero = %s;
+                Select id_galera, gi.exitencia, tipo_pollo, EXTRACT(days FROM age(CURRENT_DATE::timestamp with time zone, fecha_inicio::timestamp with time zone)) AS edad
+                from galeras g inner join galeras_info gi on g.id_galera = gi.id_galera where id_lote = %s and numero = %s;
             ''', tupleValues)
         rows = cur.fetchall()
 

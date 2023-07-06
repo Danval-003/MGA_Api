@@ -13,7 +13,8 @@ def obtainLote(tupleValues):
     try:
         conn = connect()
         cur = conn.cursor()
-        cur.execute('''select id_lote from lote where id_trabajador = %s; ''', tupleValues)
+        cur.execute('''select id_lote from galeras_info inner join galeras g 
+        on g.id_galera = galeras_info.id_galera where id_trabajador = %s; ''', tupleValues)
         rows = cur.fetchall()
 
         status['data'] = [
