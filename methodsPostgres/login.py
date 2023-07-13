@@ -1,5 +1,5 @@
 import psycopg2
-from flask import jsonify, make_response
+
 
 from extensions.hashPassword import encoding
 from extensions.connection import connect
@@ -34,4 +34,4 @@ def do_login(user, password, rol):
         status['message'] = str(e)
         status['error'] = 404
 
-    return make_response(jsonify(status), status['error'])
+    return status
