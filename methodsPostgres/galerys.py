@@ -68,7 +68,7 @@ def infoGalera(tupleValues):
 
     return make_response(jsonify(status), status['error'])
 
-def createGaleras(id_lote):
+def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio):
     status = {
         'error': 202,
         'message': '',
@@ -78,8 +78,15 @@ def createGaleras(id_lote):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        select * from get_galeries(%s);
-            ''', (id_lote,))
+        INSERT INTO galeras (id_galera, id_lote, no_galera)
+        VALUES (%s, %s, %s);
+            ''', (id_galera, id_lote, no_galera))
+        
+        cur.execute('''
+        INSERT INTO galeras_info (id_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio)
+        VALUES (%s, %s, %s, %s, %s);
+            ''', (id_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio))
+        
         cur.fetchall()
         
         status['message'] = 'Good Job'
