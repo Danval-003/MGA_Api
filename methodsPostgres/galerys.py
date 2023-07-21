@@ -80,6 +80,7 @@ def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trab
         select * from nueva_galera(%s, %s, %s, %s, %s, %s, %s)
             ''', (id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio))
         cur.fetchall()
+        conn.commit()
         
         status['message'] = 'Good Job'
     except psycopg2.Error as e:

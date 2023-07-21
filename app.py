@@ -7,6 +7,7 @@ from routers.galeras import galery_bp
 from routers.registerRoute import register_bp
 from routers.lotes import lotes_bp
 from routers.loginR import login_bp
+from routers.creacion.crear_galera import cgalery_bp
 from documentation.documentation import doc_bp
 from extensions.login_manager import lm
 
@@ -27,6 +28,7 @@ app.register_blueprint(galery_bp)
 app.register_blueprint(lotes_bp)
 app.register_blueprint(doc_bp)
 app.register_blueprint(login_bp)
+app.register_blueprint(cgalery_bp)
 
 
 @login_manager.request_loader
