@@ -12,7 +12,7 @@ def Asignation(new_id_galera, old_id_galera, new_id_trabajador, new_fecha_inicio
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        select * asignar_galeras(%s, %s, %s, %s);
+        select * from asignar_galeras(%s, %s, %s, %s);
             ''', (new_id_galera, old_id_galera, new_id_trabajador, new_fecha_inicio))
         cur.fetchall()
         
