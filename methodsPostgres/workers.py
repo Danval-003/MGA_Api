@@ -3,7 +3,7 @@ from flask import jsonify, make_response
 from extensions.hashPassword import encoding
 from extensions.connection import connect
 
-def createGaleras(nombre, telefono, direccion, puesto, id_trabajador, rol, password, user_app):
+def createTrabajador(nombre, telefono, direccion, puesto, id_trabajador, rol, password, user_app):
     status = {
         'error': 202,
         'message': '',

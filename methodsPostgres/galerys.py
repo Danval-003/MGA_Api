@@ -1,6 +1,5 @@
 import psycopg2
 from flask import jsonify, make_response
-
 from extensions.connection import connect
 
 
@@ -78,7 +77,7 @@ def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trab
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        select * from nuevo_trabajador(%s, %s, %s, %s, %s, %s, %s)
+        select * from nueva_galera(%s, %s, %s, %s, %s, %s, %s)
             ''', (id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio))
         cur.fetchall()
         
