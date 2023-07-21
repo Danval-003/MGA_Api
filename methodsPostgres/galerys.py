@@ -78,15 +78,8 @@ def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trab
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        INSERT INTO galeras (id_galera, id_lote, no_galera)
-        VALUES (%s, %s, %s);
-            ''', (id_galera, id_lote, no_galera))
-        
-        cur.execute('''
-        INSERT INTO galeras_info (id_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio)
-        VALUES (%s, %s, %s, %s, %s);
-            ''', (id_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio))
-        
+        select * from nuevo_trabajador(%s, %s, %s, %s, %s, %s, %s)
+            ''', (id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio))
         cur.fetchall()
         
         status['message'] = 'Good Job'
