@@ -16,7 +16,7 @@ def createTrabajador(nombre, telefono, direccion, puesto, id_trabajador, rol, pa
         INSERT INTO trabajador (nombre, telefono, direccion, puesto, id_trabajador, rol, hash, user_app)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
             ''', (nombre, telefono, direccion, puesto, id_trabajador, rol, encoding(password), user_app))
-        cur.fetchall()
+        conn.commit()
         
         status['message'] = 'Good Job'
     except psycopg2.Error as e:

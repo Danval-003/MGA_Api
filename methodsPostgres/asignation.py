@@ -2,7 +2,7 @@ import psycopg2
 from flask import jsonify, make_response
 from extensions.connection import connect
 
-def Asignation(new_id_galera, old_id_galera, new_id_trabajador, new_fecha_inicio):
+def Asignation(new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio):
     status = {
         'error': 202,
         'message': '',
@@ -13,8 +13,9 @@ def Asignation(new_id_galera, old_id_galera, new_id_trabajador, new_fecha_inicio
         cur = conn.cursor()
         cur.execute('''
         select * from asignar_galeras(%s, %s, %s, %s);
-            ''', (new_id_galera, old_id_galera, new_id_trabajador, new_fecha_inicio))
+            ''', (new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio))
         cur.fetchall()
+        conn.commit()
         
         status['message'] = 'Good Job'
     except psycopg2.Error as e:
