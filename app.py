@@ -67,6 +67,10 @@ def Unauthorized():
 def hello_world():
     return render_template('totalDoc.html')
 
+@app.route('/hello')
+def hel_world():
+    return "Hello, World!"
+
 
 if __name__ == '__main__':
     app.run()
