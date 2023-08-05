@@ -33,7 +33,7 @@ def obtainGaleras(info_lote, id_tr):
         status['message'] = str(e)
         status['error'] = 404
 
-    return make_response(jsonify(status), status['error'])
+    return status
 
 
 def infoGalera(tupleValues):

@@ -18,19 +18,18 @@ def obtainG():
     return infoGalera(infoTupla)
 
 
-
 @galery_bp.route('/galeras', methods=['POST'])
 @only_worker
 @login_required
 def obtainGaleriars():
     res = request.get_json()
     user = current_user.important_data()
-    id_tr = user['idTrabajador']
+    id_tr = str(user['idTrabajador'])
     if 'numLote' not in res:
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_lote'}, 404))
     resp = current_user.important_data()
-    infoLote = res['numLote']
+    infoLote = str(res['numLote'])
+    status = obtainGaleras(infoLote, id_tr)
 
-    return obtainGaleras(infoLote, id_tr)
-
+    return make_response(jsonify(status), status['error'])
