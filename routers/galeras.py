@@ -1,4 +1,6 @@
 from flask import Blueprint, request
+from flask_login import login_user, current_user, login_required
+from extensions.rol_identify import only_worker
 from methodsPostgres.galerys import *
 
 galery_bp = Blueprint('galery', __name__)
@@ -16,14 +18,19 @@ def obtainG():
     return infoGalera(infoTupla)
 
 
+
 @galery_bp.route('/galeras', methods=['POST'])
+@only_worker
+@login_required
 def obtainGaleriars():
     res = request.get_json()
+    user = current_user.important_data()
+    id_tr = user['idTrabajador']
     if 'numLote' not in res:
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_lote'}, 404))
-
-    infoTupla = res['numLote']
+    resp = current_user.important_data()
+    infoTupla = tuple(res['numLote'], id_tr)
 
     return obtainGaleras(infoTupla)
 
