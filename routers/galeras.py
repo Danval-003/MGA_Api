@@ -30,7 +30,7 @@ def obtainGaleriars():
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_lote'}, 404))
     resp = current_user.important_data()
-    infoTupla = tuple(res['numLote'], id_tr)
+    infoLote = res['numLote']
 
-    return obtainGaleras(infoTupla)
+    return obtainGaleras(infoLote, id_tr)
 

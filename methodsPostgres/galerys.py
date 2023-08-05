@@ -3,7 +3,7 @@ from flask import jsonify, make_response
 from extensions.connection import connect
 
 
-def obtainGaleras(tupleInfo):
+def obtainGaleras(info_lote, id_tr):
     status = {
         'error': 202,
         'message': '',
@@ -13,8 +13,8 @@ def obtainGaleras(tupleInfo):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        select * from get_galeries(%s, %s);
-            ''', )
+        select * from get_galeries('''+info_lote+""",'"""+id_tr+"""');
+            """, )
         rows = cur.fetchall()
 
         status['data'] = [
