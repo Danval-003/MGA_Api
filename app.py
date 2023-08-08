@@ -34,6 +34,7 @@ app.register_blueprint(cgalery_bp)
 app.register_blueprint(worker_bp)
 app.register_blueprint(asignation_bp)
 
+
 @login_manager.request_loader
 def load_user_from_request(request):
     # Obtiene el token de sesión de la cabecera "Authorization" de la solicitud HTTP
@@ -50,7 +51,7 @@ def load_user_from_request(request):
             return user
 
     # Si el token no es válido, lanza una excepción Unauthorized (401)
-    raise unauthorized()
+    return unauthorized()
 
 
 @login_manager.user_loader
@@ -66,6 +67,7 @@ def Unauthorized():
 @app.route('/')
 def hello_world():
     return render_template('totalDoc.html')
+
 
 @app.route('/hello')
 def hel_world():
