@@ -2,7 +2,7 @@ import psycopg2
 from flask import jsonify, make_response
 from extensions.connection import connect
 
-def asignation(new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio):
+def wxLote(id_lote):
     status = {
         'error': 202,
         'message': '',
@@ -12,8 +12,12 @@ def asignation(new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        select * from asignar_galeras(%s, %s, %s, %s);
-            ''', (new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio))
+        select trabajador.nombre, trabajador.id_trabajador 
+        from (galeras_info inner join trabajador on galeras_info.id_trabajador = trabajador.id_trabajador)
+            inner join galeras on galeras_info.id_galera = galeras.id_galera
+        where galeras.id_lote = %s
+        group by trabajador.id_trabajador;
+            ''', (id_lote))
         cur.fetchall()
         conn.commit()
         

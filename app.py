@@ -10,6 +10,7 @@ from routers.loginR import login_bp
 from routers.creacion.crear_galera import cgalery_bp
 from routers.creacion.crear_worker import worker_bp
 from routers.asignacion.asignacion import asignation_bp
+from routers.wxlote import wxlote_bp
 from documentation.documentation import doc_bp
 from extensions.login_manager import lm
 
@@ -32,7 +33,8 @@ app.register_blueprint(doc_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(cgalery_bp)
 app.register_blueprint(worker_bp)
-app.register_blueprint(asignation_bp)
+app.register_blueprint(asignation_bp) 
+app.register_blueprint(wxlote_bp)
 
 @login_manager.request_loader
 def load_user_from_request(request):
