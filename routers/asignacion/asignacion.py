@@ -10,6 +10,6 @@ def asignateGW():
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros para una nueva asignacion'}, 404))
 
-    return Asignation(res['new_id_lote'], res['new_no_galera'], res['new_id_trabajador'], res['new_fecha_inicio'])
+    return asignation(res['new_id_lote'], res['new_no_galera'], res['new_id_trabajador'], res['new_fecha_inicio'])
 
 #new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio

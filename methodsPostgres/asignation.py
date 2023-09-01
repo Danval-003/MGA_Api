@@ -2,7 +2,7 @@ import psycopg2
 from flask import jsonify, make_response
 from extensions.connection import connect
 
-def Asignation(new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio):
+def asignation(new_id_lote, new_no_galera, new_id_trabajador, new_fecha_inicio):
     status = {
         'error': 202,
         'message': '',
