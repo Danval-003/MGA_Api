@@ -17,10 +17,16 @@ def wxLote(id_lote):
             inner join galeras on galeras_info.id_galera = galeras.id_galera
         where galeras.id_lote = %s
         group by trabajador.id_trabajador;
-            ''', (id_lote))
-        cur.fetchall()
-        conn.commit()
-        
+            ''', id_lote)
+        rows = cur.fetchall()
+
+        status['data'] = [
+            {
+                'nombre_trabajador': row[0],
+                'id_trabajador': row[1]
+            }
+            for row in rows
+        ]
         status['message'] = 'Good Job'
     except psycopg2.Error as e:
         status['message'] = str(e)
