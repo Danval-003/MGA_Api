@@ -1,12 +1,18 @@
 from flask import Blueprint, request
+from flask_login import login_user, current_user, login_required
+from extensions.rol_identify import only_worker
 from methodsPostgres.register import *
 
 register_bp = Blueprint('register', __name__)
 
 
 @register_bp.route('/makeRegister', methods=['POST'])
+@only_worker
+@login_required
 def makeRegist():
     res = request.get_json()
+    user = current_user.important_data()
+    id_tr = str(user['idTrabajador'])
     parameters = ['cantidadAlimento', 'decesos', 'observaciones', 'idGalera', 'pesado']
     if 'cantidadAlimento' not in res or 'decesos' not in res or 'observaciones' not in res or 'idGalera' not in res \
             or 'pesado' not in res:
@@ -15,6 +21,7 @@ def makeRegist():
     lista = []
     for i in parameters:
         lista.append(res[i])
+    lista.append(id_tr)
 
     infoTupla = tuple(lista)
 
