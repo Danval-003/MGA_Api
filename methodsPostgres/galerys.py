@@ -28,7 +28,7 @@ def obtainGaleras(info_lote, id_tr):
             }
             for row in rows
         ]
-        status['message'] = 'Good Job' if len(status['data']) > 0 else 'Esta vacia'
+        status['message'] = 'Good Job' if len(status['data']) == 0 else 'Esta vacia'
     except psycopg2.Error as e:
         status['message'] = str(e)
         status['error'] = 404
