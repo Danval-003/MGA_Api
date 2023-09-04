@@ -31,7 +31,7 @@ def makeRegist():
 @register_bp.route('/obtainRegistersDate', methods=['POST'])
 def obtainRegisterDate():
     res = request.get_json()
-    query = """select cantidad_alimento, decesos, observaciones, fecha, ca, g.id_galera, id_registro, pesado, date_part('day', now()) - date_part('day', gi.fecha_inicio), tipo_pollo from 
+    query = """select cantidad_alimento, decesos, observaciones, fecha, ca, g.id_galera, id_registro, pesado, date_part('day', gi.fecha_inicio) - date_part('day', now()), tipo_pollo from 
     registro inner join galeras g on g.id_galera = registro.id_galera 
     inner join galeras_info gi on registro.id_galera = gi.id_galera"""
 
