@@ -31,18 +31,20 @@ def makeRegist():
 @register_bp.route('/obtainRegistersDate', methods=['POST'])
 def obtainRegisterDate():
     res = request.get_json()
-    query = """select * from registers """
+    query = """select cantidad_alimento, decesos, observaciones, fecha, ca, g.id_galera, id_registro, pesado, date_part('day', now()) - date_part('day', gi.fecha_inicio), tipo_pollo from 
+    registro inner join galeras g on g.id_galera = registro.id_galera 
+    inner join galeras_info gi on registro.id_galera = gi.id_galera"""
 
     if 'date' in res or 'idTrabajador' in res or 'idLote' in res:
         query = query + ' where'
         if 'date' in res:
-            query = query + " fecha > '" + res['date'] + " 0:0:0.0' and  fecha < '" + res['date'] + " 23:59:59.0' and"
+            query = query + " DATE(fecha) = '" + res['date'] + "' and"
         if 'idTrabajador' in res:
             query = query + " id_trabajador = '%s' and" % (res['idTrabajador'],)
         if 'idLote' in res:
             query = query + " id_lote = %s and" % (res['idLote'],)
-        print(query)
         query = query[:-3]
+        print(query)
 
     return obtainRegisters(query)
 
