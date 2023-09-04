@@ -160,7 +160,7 @@ def test_obtain_Lotes():
 
 def test_obtain_Lotes():
     with app.test_client() as client:
-        data = {"date": "2023-09-03", "idLote": "1"}
+        data = {"date": "2023-09-03", "idLote": "1", "idTrabajador": 1}
         # Obtiene el session_token de la respuesta para usarlo en la siguiente solicitud
         session_token = '084gAAAAABk9fSO2UOpdNH5x20pSfKtxszfPYdA20nH7a-BLINVPWGsneafKfEFQ6mKOmQyNCVxK4zQtyG7TqlWi9oocsM15Ipzo_0lYgyX9fLsi-4F_77X5AEWG9Q1y2PWiihii4ArezSTPH7kRLww7U1M2pG7PnnWnQ=='
 
