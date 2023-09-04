@@ -35,6 +35,40 @@ def obtainGaleras(info_lote, id_tr):
     return status
 
 
+def obtainGalerasZ(id_tr):
+    status = {
+        'error': 202,
+        'message': '',
+        'data': []
+    }
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute("""
+        select * from get_galeriesW('"""+id_tr+"""');
+            """, )
+
+        rows = cur.fetchall()
+
+        status['data'] = [
+            {
+                'idGalera': row[0],
+                'existence': row[5],
+                'typeChicken': row[3],
+                'numeroGalera': row[1],
+                'idLote': row[2],
+                'ca': row[4]
+            }
+            for row in rows
+        ]
+        status['message'] = 'Good Job' if len(status['data']) > 0 else 'Esta vacia'
+    except psycopg2.Error as e:
+        status['message'] = str(e)
+        status['error'] = 404
+
+    return status
+
+
 def infoGalera(tupleValues):
     status = {
         'error': 202,

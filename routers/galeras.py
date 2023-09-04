@@ -33,3 +33,14 @@ def obtainGaleriars():
     status = obtainGaleras(infoLote, id_tr)
 
     return make_response(jsonify(status), status['error'])
+
+
+@galery_bp.route('/galerasWorker', methods=['GET'])
+@only_worker
+@login_required
+def obtainGaleriarsW():
+    user = current_user.important_data()
+    id_tr = str(user['idTrabajador'])
+    status = obtainGalerasZ(id_tr)
+
+    return make_response(jsonify(status), status['error'])

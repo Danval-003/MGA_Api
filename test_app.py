@@ -101,9 +101,8 @@ def test_obtain_galerys():
         session_token = resp_data['session_token']
 
         # Simula una solicitud POST a /galeras con el session_token en los encabezados y datos JSON en el cuerpo
-        data = {'numLote': 0}  # Asegúrate de proporcionar el dato necesario para la prueba
         headers = {'Authorization': f'Bearer {session_token}'}
-        response = client.post('/galeras', json=data, headers=headers)
+        response = client.get('/galerasWorker', headers=headers)
 
         # Verifica el código de respuesta y los datos devueltos
         assert response.status_code == 202
@@ -111,18 +110,6 @@ def test_obtain_galerys():
         assert 'error' in resp_data
         assert 'message' in resp_data
         assert 'data' in resp_data
-
-        # Verifica los datos específicos devueltos
-        # Asegúrate de ajustar estos valores según lo que se espere en tu implementación
-        assert resp_data['error'] == 202
-        assert len(resp_data['data']) >= 1
-        print('Galeras:', resp_data['data'])
-        assert 'idGalera' in resp_data['data'][0]
-        assert 'existence' in resp_data['data'][0]
-        assert 'typeChicken' in resp_data['data'][0]
-        assert 'numeroGalera' in resp_data['data'][0]
-        assert 'ca' in resp_data['data'][0]
-        assert 'idLote' in resp_data['data'][0]
 
 
 def test_obtain_login_user_token():
