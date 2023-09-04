@@ -101,7 +101,7 @@ def test_obtain_galerys():
         session_token = resp_data['session_token']
 
         # Simula una solicitud POST a /galeras con el session_token en los encabezados y datos JSON en el cuerpo
-        data = {'numLote': 20}  # Asegúrate de proporcionar el dato necesario para la prueba
+        data = {'numLote': 0}  # Asegúrate de proporcionar el dato necesario para la prueba
         headers = {'Authorization': f'Bearer {session_token}'}
         response = client.post('/galeras', json=data, headers=headers)
 
@@ -116,6 +116,7 @@ def test_obtain_galerys():
         # Asegúrate de ajustar estos valores según lo que se espere en tu implementación
         assert resp_data['error'] == 202
         assert len(resp_data['data']) >= 1
+        print('Galeras:', resp_data['data'])
         assert 'idGalera' in resp_data['data'][0]
         assert 'existence' in resp_data['data'][0]
         assert 'typeChicken' in resp_data['data'][0]
@@ -145,3 +146,27 @@ def test_obtain_login_user_token():
         assert response.status_code == 202
         resp = response.get_json()
         assert resp['message'] == 'Good Job'
+
+
+def test_obtain_Lotes():
+    with app.test_client() as client:
+        # Simula una solicitud POST a /login con datos de usuario y contraseña válidos
+        data = {'password': '246810'}
+        response = client.post('/login', json=data)
+
+        # Verifica el código de respuesta y los datos devueltos para asegurarte de que el inicio de sesión sea exitoso
+        assert response.status_code == 202
+        resp_data = response.get_json()
+        assert 'session_token' in resp_data
+
+        # Obtiene el session_token de la respuesta para usarlo en la siguiente solicitud
+        session_token = resp_data['session_token']
+
+        headers = {'Authorization': f'Bearer {session_token}'}
+        response = client.get('/loteObtain', json=data, headers=headers)
+
+        assert response.status_code == 202
+        resp = response.get_json()
+        assert resp['data'] > 0
+
+

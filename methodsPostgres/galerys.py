@@ -24,7 +24,7 @@ def obtainGaleras(info_lote, id_tr):
                 'typeChicken': row[3],
                 'numeroGalera': row[1],
                 'ca': row[4],
-                'idLote': row[5]
+                'idLote': row[2]
             }
             for row in rows
         ]
