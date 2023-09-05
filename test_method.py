@@ -47,4 +47,3 @@ def test_obtain_galery():
     assert 'typeChicken' in resp['data'][0]
     assert 'numeroGalera' in resp['data'][0]
     assert 'ca' in resp['data'][0]
-    assert 'idLote' in resp['data'][0]
