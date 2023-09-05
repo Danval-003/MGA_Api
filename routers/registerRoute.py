@@ -44,7 +44,6 @@ def obtainRegisterDate():
         if 'idLote' in res:
             query = query + " id_lote = %s and" % (res['idLote'],)
         query = query[:-3]
-        print(query)
 
     return obtainRegisters(query)
 

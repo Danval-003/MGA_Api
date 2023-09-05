@@ -6,7 +6,8 @@ import json
 def test_admin_login():
     with app.test_client() as client:
         # Simula una solicitud POST a /login con datos de usuario y contraseña válidos
-        data = {'password': 'admin', 'user': 'Admin'}
+        data = {'password': 'Admin', 'user': 'admin'}
+
         response = client.post('/login', json=data)
 
         # Verifica el código de respuesta y los datos devueltos
@@ -154,21 +155,22 @@ def test_obtain_Lotes():
 
         assert response.status_code == 202
         resp = response.get_json()
-        assert resp['data'] > 0
+        assert len(resp['data']) > 0
 
 
-
-def test_obtain_Lotes():
+def test_obtain_Registers():
     with app.test_client() as client:
-        data = {"date": "2023-09-03", "idLote": "1"}
+        data = {"date": "2023-08-31", "idLote": "2"}
         # Obtiene el session_token de la respuesta para usarlo en la siguiente solicitud
-        session_token = '084gAAAAABk9fSO2UOpdNH5x20pSfKtxszfPYdA20nH7a-BLINVPWGsneafKfEFQ6mKOmQyNCVxK4zQtyG7TqlWi9oocsM15Ipzo_0lYgyX9fLsi-4F_77X5AEWG9Q1y2PWiihii4ArezSTPH7kRLww7U1M2pG7PnnWnQ=='
+        session_token = '084gAAAAABk9fSO2UOpdNH5x20pSfKtxszfPYdA20nH7a' \
+                        '-BLINVPWGsneafKfEFQ6mKOmQyNCVxK4zQtyG7TqlWi9oocsM15Ipzo_0lYgyX9fLsi' \
+                        '-4F_77X5AEWG9Q1y2PWiihii4ArezSTPH7kRLww7U1M2pG7PnnWnQ=='
 
         headers = {'Authorization': f'Bearer {session_token}'}
         response = client.post('/obtainRegistersDate', json=data, headers=headers)
 
         assert response.status_code == 202
         resp = response.get_json()
-        print(resp['data'])
+        assert len(resp['data']) > 0
 
 
