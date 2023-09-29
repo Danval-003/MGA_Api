@@ -24,6 +24,7 @@ def makeRegist():
     lista.append(id_tr)
 
     infoTupla = tuple(lista)
+    print(infoTupla)
 
     return makeRegister(infoTupla)
 
