@@ -71,11 +71,6 @@ def hello_world():
     return render_template('totalDoc.html')
 
 
-@app.route('/dashboard')
-def he_world():
-    return render_template('report_1695970883.2747188.html')
-
-
 @app.route('/hello')
 def hel_world():
     return "Hello, World!"
