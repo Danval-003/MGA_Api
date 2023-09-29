@@ -72,8 +72,9 @@ def hello_world():
 
 
 @app.route('/dashboard')
-def hello_world():
+def he_world():
     return render_template('report_1695970883.2747188.html')
+
 
 @app.route('/hello')
 def hel_world():
