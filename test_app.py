@@ -119,7 +119,7 @@ def test_obtain_login_user_token():
         data = {'password': '246810'}
         response = client.post('/login', json=data)
 
-        info = {'cantidadAlimento': 0, 'decesos': 0, 'observaciones': '0', 'idGalera': '0000PD', 'pesado': 200}
+        info = {'cantidadAlimento': 2, 'decesos': 2, 'observaciones': '0', 'idGalera': '0000PD', 'pesado': 200}
 
         # Verifica el código de respuesta y los datos devueltos
         assert response.status_code == 202
@@ -160,7 +160,7 @@ def test_obtain_Lotes():
 
 def test_obtain_Registers():
     with app.test_client() as client:
-        data = {"date": "2023-08-31", "idLote": "2"}
+        data = {"date": "2023-09-23"}
         # Obtiene el session_token de la respuesta para usarlo en la siguiente solicitud
         session_token = '084gAAAAABk9fSO2UOpdNH5x20pSfKtxszfPYdA20nH7a' \
                         '-BLINVPWGsneafKfEFQ6mKOmQyNCVxK4zQtyG7TqlWi9oocsM15Ipzo_0lYgyX9fLsi' \
