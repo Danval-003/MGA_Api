@@ -68,12 +68,15 @@ def obtainTrabajadores():
     try:
         conn = connect()  # Establish a connection to your database
         cur = conn.cursor()
-        cur.execute('select id_trabajador, nombre from trabajadores;')
+        cur.execute('select nombre, telefono, direccion, puesto, id_trabajador from trabajador;')
         rows = cur.fetchall()
         status['data'] = [
             {
-                'idTrabajador': row[0],
-                'nombre': row[1]
+                'nombre': row[0],
+                'telefono': row[1],
+                'direccion': row[2],
+                'puesto': row[3],
+                'id_trabajador': row[4]
             }
             for row in rows
         ]
