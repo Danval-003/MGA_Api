@@ -76,7 +76,7 @@ def obtainTrabajadores():
                 'telefono': row[1],
                 'direccion': row[2],
                 'puesto': row[3],
-                'id_trabajador': row[4]
+                'idTrabajador': row[4]
             }
             for row in rows
         ]
