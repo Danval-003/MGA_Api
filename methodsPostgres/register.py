@@ -68,7 +68,7 @@ def obtainTrabajadores():
     try:
         conn = connect()  # Establish a connection to your database
         cur = conn.cursor()
-        cur.execute('select nombre, telefono, direccion, puesto, id_trabajador from trabajador;')
+        cur.execute('select nombre, telefono, direccion, puesto, id_trabajador, url_image from trabajador;')
         rows = cur.fetchall()
         status['data'] = [
             {
@@ -76,7 +76,8 @@ def obtainTrabajadores():
                 'telefono': row[1],
                 'direccion': row[2],
                 'puesto': row[3],
-                'idTrabajador': row[4]
+                'idTrabajador': row[4],
+                'img': row[5] if row[5] is not None else 'N.A'
             }
             for row in rows
         ]
