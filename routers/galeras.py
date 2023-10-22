@@ -19,7 +19,6 @@ def obtainG():
 
 
 @galery_bp.route('/galeras', methods=['POST'])
-@only_worker
 @login_required
 def obtainGaleriars():
     res = request.get_json()
