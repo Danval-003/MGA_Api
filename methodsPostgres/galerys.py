@@ -69,7 +69,7 @@ def obtainGalerasZ(id_tr):
     return status
 
 
-def obtainGalerasAdm():
+def obtainGalerasAdm(idLot):
     status = {
         'error': 202,
         'message': '',
@@ -79,8 +79,8 @@ def obtainGalerasAdm():
         conn = connect()
         cur = conn.cursor()
         cur.execute("""
-        select * from get_galeriesadm();
-            """, )
+        select * from get_galeriesadm(%s);
+            """, (idLot,))
 
         rows = cur.fetchall()
 

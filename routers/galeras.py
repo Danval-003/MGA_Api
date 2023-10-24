@@ -36,11 +36,17 @@ def obtainGaleriars():
     return make_response(jsonify(status), status['error'])
 
 
-@galery_bp.route('/galerasAdmin', methods=['GET'])
+@galery_bp.route('/galerasAdmin', methods=['POST'])
 @only_admin
 @login_required
 def obtainGaleriarsAdmin():
-    status = obtainGalerasAdm()
+    res = request.get_json()
+    if 'numLote' not in res:
+        return make_response(jsonify(
+            {'message': 'Error al colocar los datos debias mandar como parametros num_lote'}, 404))
+    id_tr = str(user['numLote'])
+    status = obtainGalerasAdm(id_tr)
+
 
     return make_response(jsonify(status), status['error'])
 
