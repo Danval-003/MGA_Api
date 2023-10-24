@@ -80,7 +80,7 @@ def obtainGalerasAdm(idLot):
         cur = conn.cursor()
         cur.execute("""
         select * from get_galeriesadm(%s);
-            """, (idLot,))
+            """, (int(idLot),))
 
         rows = cur.fetchall()
 
