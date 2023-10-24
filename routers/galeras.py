@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_user, current_user, login_required
-from extensions.rol_identify import only_worker
+from extensions.rol_identify import only_worker, only_admin
 from methodsPostgres.galerys import *
 from extensions.cache import cache
 
@@ -20,6 +20,7 @@ def obtainG():
 
 
 @galery_bp.route('/galeras', methods=['POST'])
+@only_worker
 @login_required
 def obtainGaleriars():
     res = request.get_json()
@@ -31,6 +32,15 @@ def obtainGaleriars():
     resp = current_user.important_data()
     infoLote = str(res['numLote'])
     status = obtainGaleras(infoLote, id_tr)
+
+    return make_response(jsonify(status), status['error'])
+
+
+@galery_bp.route('/galerasAdmin', methods=['GET'])
+@only_admin
+@login_required
+def obtainGaleriarsAdmin():
+    status = obtainGalerasAdm()
 
     return make_response(jsonify(status), status['error'])
 
