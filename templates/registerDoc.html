@@ -60,10 +60,10 @@
     </style>
 </head>
 <body>
-        <h3>Route: /makeRegister</h3>
-    <p><strong>Method:</strong> POST</p>
-    <p><strong>Description:</strong> Registers a new element in the database.</p>
-    <p><strong>Parameters:</strong></p>
+    <h2>Realizar registros</h2>
+    <p><strong>URL:</strong> /makeRegister</p>
+    <p><strong>Método:</strong> POST</p>
+    <p><strong>Parámetros:</strong></p>
     <ul>
         <li><strong>cantidadAlimento</strong> (required): Amount of food (type: double precision).</li>
         <li><strong>decesos</strong> (required): Number of deaths (type: integer).</li>
@@ -75,11 +75,11 @@
         <li><strong>idTrabajador</strong> (optional): ID of the worker to filter the registers (type: varchar).</li>
         <li><strong>idLote</strong> (optional): ID of the lot to filter the registers (type: integer).</li>
     </ul>
-    <p><strong>Response:</strong> Returns a JSON message indicating the result of the operation.</p>
+    <p><strong>Respuesta:</strong> Mensaje JSON indicando el éxito de la operación.</p>
 
     <!-- Ejemplo 1 -->
     <div class="example-section">
-        <h4>Example 1: Register a new element</h4>
+        <h4>Example 1: Registrar un nuevo elemento</h4>
         <p>Endpoint: <code>/makeRegister</code></p>
         <p>Request:</p>
         <pre><code>
@@ -103,7 +103,7 @@
 
     <!-- Ejemplo 2 -->
     <div class="example-section">
-        <h4>Example 2: Register a new element with filter by worker ID and lot ID</h4>
+        <h4>Example 2: Registrar nuevo elemento, filtrando por el ID del trabajador y del lote.</h4>
         <p>Endpoint: <code>/makeRegister</code></p>
         <p>Request:</p>
         <pre><code>
@@ -127,16 +127,17 @@
         </code></pre>
     </div>
 
-<h3>Route: /obtainRegistersDate</h3>
-<p><strong>Method:</strong> POST</p>
-<p><strong>Description:</strong> Retrieves registers from the database based on optional filters.</p>
-<p><strong>Request Body:</strong> Requires a JSON object with the following optional fields:</p>
+<h2>Obtener fecha de registros</h2>
+<p><strong>URL:</strong> /obtainRegistersDate</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Description:</strong> Retorna registros de la base de datos basados en filtros aplicados.</p>
+<p><strong>Request Body:</strong> Se requiere un objeto JSON con los siguientes campos:</p>
 <ul>
-    <li><strong>date</strong>: Filter registers by date (format: "YYYY-MM-DD", type: string).</li>
-    <li><strong>idTrabajador</strong>: Filter registers by worker ID (type: string).</li>
-    <li><strong>idLote</strong>: Filter registers by lot ID (type: string).</li>
+    <li><strong>date</strong>: Filtro de registros por fecha (format: "YYYY-MM-DD", type: string).</li>
+    <li><strong>idTrabajador</strong>: Filtro de registros por ID del trabajador (type: string).</li>
+    <li><strong>idLote</strong>: Filtro de registros por ID del lote (type: string).</li>
 </ul>
-<p><strong>Response:</strong> Returns a JSON object with the following structure:</p>
+<p><strong>Repuesta:</strong> Objeto JSON con la siguiente estructura:</p>
 <pre><code>
 {
     "error": 202,
@@ -167,10 +168,11 @@
 }
 </code></pre>
 
-<h3>Route: /obtainTrabajadores</h3>
-<p><strong>Method:</strong> GET</p>
-<p><strong>Description:</strong> Retrieves information about workers from the database.</p>
-<p><strong>Response:</strong> Returns a JSON object with the following structure:</p>
+<h2>Obtener trabajadores</h2>
+<p><strong>URL:</strong> /obtainTrabajadores</p>
+<p><strong>Método:</strong> GET</p>
+<p><strong>Descripción:</strong> Retorna datos persistentes sobre los trabajadores.</p>
+<p><strong>Repuesta:</strong> Objeto JSON con la siguiente estructura:</p>
 <pre><code>
 {
     "error": 202,
@@ -189,6 +191,48 @@
 }
 </code></pre>
 
-
+<h2>Crear nuevo trabajador</h2>
+<p><strong>URL:</strong> /wcreate</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Descripción:</strong> Opción para poder ingresar un nuevo trabajador a la base de datos.</p>
+<p><strong>Repuesta:</strong> Devuelve la asignación realizada.</p>
+<p><strong>Parámetros:</strong></p>
+<ul>
+  <li><strong>nombre</strong> (requerido): Nombre del trabajador.</li>
+  <li><strong>telefono</strong> (requerido): Teléfono del trabajador.</li>
+  <li><strong>direccion</strong> (requerido): Dirección de residencia dle ingresado.</li>
+  <li><strong>puesto</strong> (requerido): Puesto a cargo.</li>
+  <li><strong>idTrabajador</strong> (requerido): ID de trabajador registrado.</li>
+  <li><strong>rol</strong> (requerido): Rol a desempeñar.</li>
+  <li><strong>password</strong> (requerido): Hash de la contraseña de la sesión del nuevo ingreso.</li>
+  <li><strong>user_app</strong> (requerido): Nombre de usuario para el nuevo ingreso.</li>
+</ul>
+<p><strong>Respuesta:</strong> Devuelve la asignación realizada.</p>
+<h3>Ejemplo de solicitud:</h3>
+<code>
+  POST /wcreate<br>
+  {<br>
+  &nbsp;&nbsp;"nombre": "Jose Salgado",<br>
+  &nbsp;&nbsp;"telefono": "45850595",<br>
+  &nbsp;&nbsp;"direccion": "Oratorio",<br>
+  &nbsp;&nbsp;"puesto": "trabajador"<br>
+  &nbsp;&nbsp;"idTrabajador": "456",<br>
+  &nbsp;&nbsp;"rol": "limpieza",<br>
+  &nbsp;&nbsp;"password": "uur8eu4e9jfnksdjd93032mapqka2md",<br>
+  &nbsp;&nbsp;"user_app": "salga_jose"<br>
+  }
+</code>
+<h3>Ejemplo de respuesta:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"error": 202,<br>
+  &nbsp;&nbsp;"message": "Good Job",<br>
+  }
+<h3>Ejemplo de respuesta de error:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"message": "Error al colocar los datos debias mandar como parametros para la creacion del nuevo trabajador"<br>
+  }
+</code>
 </body>
 </html>

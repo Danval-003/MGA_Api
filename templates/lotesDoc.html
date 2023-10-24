@@ -67,5 +67,38 @@
   &nbsp;&nbsp;]<br>
   }
 </code>
+<h2>Obtener trabajadores por lote</h2>
+<p><strong>URL:</strong> /wperLote</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Parámetros:</strong></p>
+<ul>
+  <li><strong>idLote</strong> (requerido): Id del lote a necesitar.</li>
+</ul>
+<p><strong>Respuesta:</strong> Devuelve los trabajadores que trabjan en cierto lote en formato JSON.</p>
+<h3>Ejemplo de solicitud:</h3>
+<code>
+  POST /lObtain<br>
+  {<br>
+  &nbsp;&nbsp;"idLote": "458"<br>
+  }
+</code>
+<h3>Ejemplo de respuesta:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"error": 202,<br>
+  &nbsp;&nbsp;"message": "Good Job",<br>
+  &nbsp;&nbsp;"data": [<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"nombre": "Alfonso Guerrero"<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idTrabajador": "001"<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+  &nbsp;&nbsp;]<br>
+  }
+<h3>Ejemplo de respuesta de error:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"message": "Ingreso incorrecto de lote"<br>
+  }
+</code>
 </body>
 </html>
