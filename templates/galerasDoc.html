@@ -32,75 +32,148 @@
   </style>
 </head>
 <body>
-  <h1>API Galería</h1>
-  <h2>Obtener Información de una Galería</h2>
-  <p><strong>URL:</strong> /gObtain</p>
-  <p><strong>Método:</strong> POST</p>
-  <p><strong>Parámetros:</strong></p>
-  <ul>
-    <li><strong>numGalera</strong> (requerido): Número de la galera.</li>
-    <li><strong>numLote</strong> (requerido): Número del lote.</li>
-  </ul>
-  <p><strong>Respuesta:</strong> Devuelve la información de la galera especificada en formato JSON.</p>
-  <h3>Ejemplo de solicitud:</h3>
-  <code>
-    POST /gObtain<br>
-    {<br>
-    &nbsp;&nbsp;"numGalera": '1',<br>
-    &nbsp;&nbsp;"numLote": 4 <br>
-    }
-  </code>
-  <h3>Ejemplo de respuesta:</h3>
-  <code>
-    {<br>
-    &nbsp;&nbsp;"error": 202,<br>
-    &nbsp;&nbsp;"message": "Good Job",<br>
-    &nbsp;&nbsp;"data": [<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 1,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 100,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo A"<br>
-          "edad": "16"
-    &nbsp;&nbsp;&nbsp;&nbsp;}
-    &nbsp;&nbsp;]<br>
-    }
-  </code>
-  <h2>Obtener Galerías</h2>
-  <p><strong>URL:</strong> /galeras</p>
-  <p><strong>Método:</strong> POST</p>
-  <p><strong>Parámetros:</strong></p>
-  <ul>
-    <li><strong>numLote</strong> (requerido): Número del lote.</li>
-  </ul>
-  <p><strong>Respuesta:</strong> Devuelve las galerías relacionadas con el número de lote especificado en formato JSON.</p>
+<h1>API Galera</h1>
+<h2>Obtener Información de una Galera</h2>
+<p><strong>URL:</strong> /gObtain</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Parámetros:</strong></p>
+<ul>
+  <li><strong>numGalera</strong> (requerido): Número de la galera.</li>
+  <li><strong>numLote</strong> (requerido): Número del lote.</li>
+</ul>
+<p><strong>Respuesta:</strong> Devuelve la información de la galera especificada en formato JSON.</p>
 <h3>Ejemplo de solicitud:</h3>
-  <code>
-    POST /galeras<br>
-    {<br>
-    &nbsp;&nbsp;"numLote": 456<br>
-    }
-  </code>
-  <h3>Ejemplo de respuesta:</h3>
-  <code>
-    {<br>
-    &nbsp;&nbsp;"error": 202,<br>
-    &nbsp;&nbsp;"message": "Good Job",<br>
-    &nbsp;&nbsp;"data": [<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 1,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 100,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo A"<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;},<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;{<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 2,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 200,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo B"<br>
-          "numeroGalera": "2",
-          "ca": 3.2,
-          "idLote": 456
-    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-    &nbsp;&nbsp;]<br>
-    }
-  </code>
+<code>
+  POST /gObtain<br>
+  {<br>
+  &nbsp;&nbsp;"numGalera": '1',<br>
+  &nbsp;&nbsp;"numLote": 4 <br>
+  }
+</code>
+<h3>Ejemplo de respuesta:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"error": 202,<br>
+  &nbsp;&nbsp;"message": "Good Job",<br>
+  &nbsp;&nbsp;"data": [<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 1,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 100,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo A"<br>
+        "edad": "16"
+  &nbsp;&nbsp;&nbsp;&nbsp;}
+  &nbsp;&nbsp;]<br>
+  }
+</code>
+<h2>Obtener Galeras con base en su lote</h2>
+<p><strong>URL:</strong> /galeras</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Parámetros:</strong></p>
+<ul>
+  <li><strong>numLote</strong> (requerido): Número del lote.</li>
+</ul>
+<p><strong>Respuesta:</strong> Devuelve las galeras relacionadas con el número de lote especificado en formato JSON.</p>
+<h3>Ejemplo de solicitud:</h3>
+<code>
+  POST /galeras<br>
+  {<br>
+  &nbsp;&nbsp;"numLote": 456<br>
+  }
+</code>
+<h3>Ejemplo de respuesta:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"error": 202,<br>
+  &nbsp;&nbsp;"message": "Good Job",<br>
+  &nbsp;&nbsp;"data": [<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 1,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 100,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo A"<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"idGalera": 2,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"existence": 200,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"typeChicken": "Pollo B"<br>
+        "numeroGalera": "2",
+        "ca": 3.2,
+        "idLote": 456
+  &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  &nbsp;&nbsp;]<br>
+  }
+</code>
+<h2>Asignación de galeras</h2>
+<p><strong>URL:</strong> /asignate</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Parámetros:</strong></p>
+<ul>
+  <li><strong>numLote</strong> (requerido): Número del lote.</li>
+  <li><strong>numGalera</strong> (requerido): Número de la galera.</li>
+  <li><strong>idTrabajador</strong> (requerido): ID del trabajador.</li>
+  <li><strong>fecha_inicio</strong> (requerido): Fecha de inicio de operaciones.</li>
+</ul>
+<p><strong>Respuesta:</strong> Devuelve la asignación realizada.</p>
+<h3>Ejemplo de solicitud:</h3>
+<code>
+  POST /asignate<br>
+  {<br>
+  &nbsp;&nbsp;"numLote": 456,<br>
+  &nbsp;&nbsp;"numGalera": 2356,<br>
+  &nbsp;&nbsp;"idTrabajador": "001",<br>
+  &nbsp;&nbsp;"fecha_inicio": "23/10/2023"<br>
+  }
+</code>
+<h3>Ejemplo de respuesta:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"error": 202,<br>
+  &nbsp;&nbsp;"message": "Good Job",<br>
+  }
+<h3>Ejemplo de respuesta de error:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"message": "Error al colocar los datos debias mandar como parametros para una nueva asignacion"<br>
+  }
+<h2>Crear neuva galera</h2>
+<p><strong>URL:</strong> /gcreate</p>
+<p><strong>Método:</strong> POST</p>
+<p><strong>Descripción:</strong> Opción para poder ingresar una nueva galera a la base de datos.</p>
+<p><strong>Repuesta:</strong> Devuelve la asignación realizada.</p>
+<p><strong>Parámetros:</strong></p>
+<ul>
+  <li><strong>idGalera</strong> (requerido): ID de la nueva galera.</li>
+  <li><strong>idLote</strong> (requerido): ID del lote asignado.</li>
+  <li><strong>numeroGalera</strong> (requerido): Número de la nueva galera.</li>
+  <li><strong>existencia</strong> (requerido): Cantidad de pollos dentro de la nueva galera.</li>
+  <li><strong>tipo_pollo</strong> (requerido): Pollo macho, hembra o mixto.</li>
+  <li><strong>idTrabajador</strong> (requerido):ID del trabajador asignado a la galera.</li>
+  <li><strong>fecha_inicio</strong> (requerido): Fecha de inicio de actividades.</li>
+</ul>
+<p><strong>Respuesta:</strong> Devuelve la asignación realizada.</p>
+<h3>Ejemplo de solicitud:</h3>
+<code>
+  POST /gcreate<br>
+  {<br>
+  &nbsp;&nbsp;"idGalera": "2103",<br>
+  &nbsp;&nbsp;"idLote": "486",<br>
+  &nbsp;&nbsp;"numeroGalera": 3,<br>
+  &nbsp;&nbsp;"existencia": 300<br>
+  &nbsp;&nbsp;"tipo_pollo": "Mixto",<br>
+  &nbsp;&nbsp;"idTrabajador": "002",<br>
+  &nbsp;&nbsp;"fecha_inicio": "23/10/2023",<br>
+  }
+</code>
+<h3>Ejemplo de respuesta:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"error": 202,<br>
+  &nbsp;&nbsp;"message": "Good Job",<br>
+  }
+<h3>Ejemplo de respuesta de error:</h3>
+<code>
+  {<br>
+  &nbsp;&nbsp;"message": "Error al colocar los datos debias mandar como parametros para la creacion de la nueva galera"<br>
+  }
+</code>
 </body>
 </html>
