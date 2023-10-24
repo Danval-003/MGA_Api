@@ -10,6 +10,7 @@ def only_worker(func):
         if rol == 'trabajador':
             return func(*args, **kwargs)  # Call the original function with arguments
         else:
+            print(rol)
             return unauthorized()  # Return the unauthorized response
 
     return wrapper  # Return the wrapper function without calling it

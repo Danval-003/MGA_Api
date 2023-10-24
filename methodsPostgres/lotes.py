@@ -29,3 +29,4 @@ def obtainLote(tupleValues):
         status['error'] = 404
 
     return make_response(jsonify(status), status['error'])
+

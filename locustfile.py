@@ -6,7 +6,7 @@ class MyUser(HttpUser):
     @task
     def test_login(self):
         data = {'password': 'Admin', 'user': 'admin'}
-        self.client.post('/login', json=data)
+        response = self.client.post('/login', json=data)
 
     @task
     def test_make_login(self):

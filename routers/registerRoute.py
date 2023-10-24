@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_user, current_user, login_required
 from extensions.rol_identify import only_worker
 from methodsPostgres.register import *
+from extensions.cache import cache
 
 register_bp = Blueprint('register', __name__)
 
@@ -30,6 +31,7 @@ def makeRegist():
 
 
 @register_bp.route('/obtainRegistersDate', methods=['POST'])
+@cache.cached(timeout=60)
 def obtainRegisterDate():
     res = request.get_json()
 

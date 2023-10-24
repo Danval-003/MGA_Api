@@ -13,8 +13,7 @@ from routers.asignacion.asignacion import asignation_bp
 from routers.wxlote import wxlote_bp
 from documentation.documentation import doc_bp
 from extensions.login_manager import lm
-
-app = Flask(__name__)
+from extensions.cache import app
 
 # Se instancia para aceptar CORS
 CORS(app)
