@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 from extensions.unauthorized import unauthorized
+import os
 
 from extensions.User_object import User
 from routers.galeras import galery_bp
@@ -14,6 +15,9 @@ from routers.wxlote import wxlote_bp
 from documentation.documentation import doc_bp
 from extensions.login_manager import lm
 from extensions.cache import app
+
+template_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+app = Flask(__name__, template_folder=template_folder)
 
 # Se instancia para aceptar CORS
 CORS(app)
