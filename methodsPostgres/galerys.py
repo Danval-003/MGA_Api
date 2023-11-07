@@ -57,7 +57,8 @@ def obtainGalerasZ(id_tr):
                 'typeChicken': row[3],
                 'numeroGalera': row[1],
                 'idLote': row[2],
-                'ca': row[4]
+                'ca': row[4],
+                'fechaInicio': row[5]
             }
             for row in rows
         ]
