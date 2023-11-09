@@ -53,6 +53,7 @@ def obtainGalerasZ(id_tr):
         rows = cur.fetchall()
         for row in rows:
             print(row[6])
+            print(type(row[6]))
 
         status['data'] = [
             {
@@ -62,7 +63,7 @@ def obtainGalerasZ(id_tr):
                 'numeroGalera': row[1],
                 'idLote': row[2],
                 'ca': row[4],
-                'fechaInicio': row[6]
+                'fechaInicio': str(row[6])
             }
             for row in rows
         ]
