@@ -66,7 +66,7 @@ def obtainGalerasZ(id_tr):
                 'numeroGalera': row[1],
                 'idLote': row[2],
                 'ca': row[4],
-                'fechaInicio': str(row[6].strftime("%A")),
+                'dia': str(row[6].strftime("%A")),
                 'tiempoEnDias': str(today - row[6])
             }
             for row in rows
