@@ -1,4 +1,5 @@
-from datetime import date
+from datetime import date, datetime
+import pytz
 
 import psycopg2
 from flask import jsonify, make_response
@@ -51,8 +52,10 @@ def obtainGalerasZ(id_tr):
             """, )
 
         rows = cur.fetchall()
+        zona_horaria_guatemala = pytz.timezone('America/Guatemala')
+        today = datetime.now(zona_horaria_guatemala).date()
         for row in rows:
-            print(row[6].weekday())
+            print(row[6].strftime("%A"))
             print(type(row[6]))
 
         status['data'] = [
@@ -63,7 +66,8 @@ def obtainGalerasZ(id_tr):
                 'numeroGalera': row[1],
                 'idLote': row[2],
                 'ca': row[4],
-                'fechaInicio': str(row[6].weekday())
+                'fechaInicio': str(row[6].strftime("%A")),
+                'tiempoEnDias': str(today - row[6])
             }
             for row in rows
         ]
