@@ -52,7 +52,7 @@ def obtainGalerasZ(id_tr):
 
         rows = cur.fetchall()
         for row in rows:
-            print(row[6].day)
+            print(row[6].weekday())
             print(type(row[6]))
 
         status['data'] = [
@@ -63,7 +63,7 @@ def obtainGalerasZ(id_tr):
                 'numeroGalera': row[1],
                 'idLote': row[2],
                 'ca': row[4],
-                'fechaInicio': str(row[6].day)
+                'fechaInicio': str(row[6].weekday())
             }
             for row in rows
         ]
