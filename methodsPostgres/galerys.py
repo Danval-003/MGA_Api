@@ -51,6 +51,8 @@ def obtainGalerasZ(id_tr):
             """, )
 
         rows = cur.fetchall()
+        for row in rows:
+            print(row[6])
 
         status['data'] = [
             {
