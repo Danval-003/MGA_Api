@@ -13,7 +13,7 @@ def makeLogin():
     res = request.get_json()
     if 'password' not in res:
         return make_response(jsonify(
-            {'message': 'Error al colocar los datos. Debias mandar como parametros user y password'}, 404))
+            {'message': 'Error al colocar los datos debias mandar como parametros user y password'}, 404))
     rol = 'trabajador'
     user = ''
     if 'user' in res:

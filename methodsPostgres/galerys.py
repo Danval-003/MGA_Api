@@ -1,3 +1,5 @@
+from datetime import date
+
 import psycopg2
 from flask import jsonify, make_response
 from extensions.connection import connect
@@ -58,7 +60,7 @@ def obtainGalerasZ(id_tr):
                 'numeroGalera': row[1],
                 'idLote': row[2],
                 'ca': row[4],
-                'fechaInicio': row[6]
+                'fechaInicio': date(row[6])
             }
             for row in rows
         ]

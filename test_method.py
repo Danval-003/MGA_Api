@@ -2,6 +2,7 @@ import pytest
 from methodsPostgres.login import *
 from methodsPostgres.galerys import *
 
+
 # Prueba para el método do_login
 def test_do_login():
     # Ejecuta el método do_login con datos de usuario y contraseña válidos
