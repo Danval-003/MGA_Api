@@ -11,16 +11,27 @@ def makeRegister(tupleValues):
         'data': []
     }
     try:
-        conn = connect()  # Establish a connection to your database
+        conn = connect()  # Establecer una conexión a tu base de datos
         cur = conn.cursor()
-        cur.execute('''
-            SELECT * from register(%s, %s, %s, %s, %s, %s)
-            ''', tupleValues)
+
+        # Intentar adquirir un bloqueo de fila exclusivo en la tabla galeras_info
+        # para la galera específica antes de llamar a la función register
+        cur.execute("SELECT 1 FROM galeras_info WHERE id_galera = %s FOR UPDATE NOWAIT", (tupleValues[3],))
+
+        # Llamar a la función register dentro de la transacción
+        cur.execute('SELECT * FROM register(%s, %s, %s, %s, %s, %s)', tupleValues)
+
+        # Realizar COMMIT ya que hemos adquirido el bloqueo
         conn.commit()
+
         status['message'] = 'Good Job'
     except psycopg2.Error as e:
+        # Manejar excepciones
+        conn.rollback()  # Realizar rollback en caso de error
         status['message'] = str(e)
         status['error'] = 404
+    finally:
+        conn.close()
 
     return make_response(jsonify(status), status['error'])
 
