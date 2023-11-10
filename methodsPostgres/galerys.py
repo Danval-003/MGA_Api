@@ -16,7 +16,7 @@ def obtainGaleras(info_lote, id_tr):
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        select * from get_galeries('''+info_lote+""",'"""+id_tr+"""');
+        select * from get_galeries(''' + info_lote + """,'""" + id_tr + """');
             """, )
         rows = cur.fetchall()
 
@@ -48,15 +48,12 @@ def obtainGalerasZ(id_tr):
         conn = connect()
         cur = conn.cursor()
         cur.execute("""
-        select * from get_galeriesW('"""+id_tr+"""');
+        select * from get_galeriesW('""" + id_tr + """');
             """, )
 
         rows = cur.fetchall()
         zona_horaria_guatemala = pytz.timezone('America/Guatemala')
         today = datetime.now(zona_horaria_guatemala).date()
-        for row in rows:
-            print(row[6].strftime("%A"))
-            print(type(row[6]))
 
         status['data'] = [
             {
@@ -113,6 +110,30 @@ def obtainGalerasAdm(idLot):
     return status
 
 
+def obtainExistence():
+    status = {
+        'error': 202,
+        'message': '',
+        'data': []
+    }
+    try:
+        conn = connect()
+        cur = conn.cursor()
+        cur.execute(
+            'select sum(exitencia) from galeras_info inner join galeras g on g.id_galera = galeras_info.id_galera where fecha_salida is null')
+
+        rows = cur.fetchall()
+
+        status['data'] = rows[0][0]
+
+        status['message'] = 'Good Job'
+    except psycopg2.Error as e:
+        status['message'] = str(e)
+        status['error'] = 404
+
+    return status
+
+
 def infoGalera(tupleValues):
     status = {
         'error': 202,
@@ -144,6 +165,7 @@ def infoGalera(tupleValues):
 
     return make_response(jsonify(status), status['error'])
 
+
 def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio):
     status = {
         'error': 202,
@@ -158,7 +180,7 @@ def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trab
             ''', (id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio))
         cur.fetchall()
         conn.commit()
-        
+
         status['message'] = 'Good Job'
     except psycopg2.Error as e:
         status['message'] = str(e)

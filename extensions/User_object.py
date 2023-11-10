@@ -46,6 +46,6 @@ class User(UserMixin):
         data = do_login(user_0, password_0, rol_0)
         true_user = data['data'][0]
         true_user['message'] = data['message']
-        true_user['error']= data['error']
+        true_user['error'] = data['error']
 
         return true_user

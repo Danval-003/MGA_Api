@@ -19,6 +19,10 @@ def obtainG():
     return infoGalera(infoTupla)
 
 
+@galery_bp.route('/countObtain', methods=['GET'])
+def obtainCount():
+    return obtainExistence()
+
 @galery_bp.route('/galeras', methods=['POST'])
 @only_worker
 @login_required
