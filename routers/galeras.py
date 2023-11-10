@@ -58,7 +58,6 @@ def obtainGaleriarsAdmin():
 @galery_bp.route('/galerasWorker', methods=['GET'])
 @only_worker
 @login_required
-@cache.cached(timeout=60, key_prefix='galerias_worker')
 def obtainGaleriarsW():
     user = current_user.important_data()
     id_tr = str(user['idTrabajador'])
