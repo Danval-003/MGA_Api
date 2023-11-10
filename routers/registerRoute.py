@@ -31,7 +31,6 @@ def makeRegist():
 
 
 @register_bp.route('/obtainRegistersDate', methods=['POST'])
-@cache.cached(timeout=60)
 def obtainRegisterDate():
     res = request.get_json()
 
