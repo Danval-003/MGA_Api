@@ -39,6 +39,7 @@ def obtainGaleras(info_lote, id_tr):
 
 
 def obtainGalerasZ():
+    print('rows')
     status = {
         'error': 202,
         'message': '',
