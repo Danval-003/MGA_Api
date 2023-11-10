@@ -35,7 +35,7 @@ def makeRegist():
 def obtainRegisterDate():
     res = request.get_json()
 
-    query = """select cantidad_alimento, decesos, observaciones, fecha, ca, g.id_galera, id_registro, pesado,  date_part('day', fecha) -  date_part('day', g.fecha_inicio), tipo_pollo from 
+    query = """select cantidad_alimento, decesos, observaciones, fecha, ca, g.id_galera, id_registro, pesado, date_part('day', g.fecha_inicio) - date_part('day', fecha), tipo_pollo from 
     registro inner join galeras g on g.id_galera = registro.id_galera 
     inner join galeras_info gi on registro.id_galera = gi.id_galera"""
 
