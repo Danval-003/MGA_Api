@@ -38,7 +38,7 @@ def obtainGaleras(info_lote, id_tr):
     return status
 
 
-def obtainGalerasZ(id_tr):
+def obtainGalerasZ():
     status = {
         'error': 202,
         'message': '',
@@ -48,7 +48,7 @@ def obtainGalerasZ(id_tr):
         conn = connect()
         cur = conn.cursor()
         cur.execute("""
-        select * from get_galeriesW('""" + id_tr + """');
+        select * from get_galeriess();
             """, )
 
         rows = cur.fetchall()

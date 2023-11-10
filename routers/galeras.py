@@ -56,11 +56,8 @@ def obtainGaleriarsAdmin():
 
 
 @galery_bp.route('/galerasWorker', methods=['GET'])
-@only_worker
 @login_required
 def obtainGaleriarsW():
-    user = current_user.important_data()
-    id_tr = str(user['idTrabajador'])
-    status = obtainGalerasZ(id_tr)
+    status = obtainGalerasZ()
 
     return make_response(jsonify(status), status['error'])
