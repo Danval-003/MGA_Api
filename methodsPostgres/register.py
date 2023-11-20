@@ -114,8 +114,8 @@ def obtainRanking():
         status['data'] = [
             {
                 'nombre': row[0],
-                'avgCA': row[1],
-                'urlImage': row[2]
+                'avgCA': row[2],
+                'urlImage': row[1]
             }
             for row in rows
         ]
