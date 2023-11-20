@@ -140,7 +140,7 @@ def obtainInfoEnsayo(idGale):
         cur = conn.cursor()
         cur.execute('select * from get_ensayoinfo(%s);', (idGale,))
         rows = cur.fetchall()
-        if rows > 0:
+        if len(rows) > 0:
             zona_horaria_guatemala = pytz.timezone('America/Guatemala')
             today = datetime.now(zona_horaria_guatemala).date()
             status['data'] = [
