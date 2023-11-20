@@ -115,6 +115,7 @@ def obtainRanking():
             {
                 'nombre': row[0],
                 'avgCA': row[1],
+                'urlImage': row[2]
             }
             for row in rows
         ]
