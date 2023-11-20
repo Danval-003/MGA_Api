@@ -53,7 +53,6 @@ def obtainGalerasZ():
             """, )
 
         rows = cur.fetchall()
-        print(rows)
         zona_horaria_guatemala = pytz.timezone('America/Guatemala')
         today = datetime.now(zona_horaria_guatemala).date()
 

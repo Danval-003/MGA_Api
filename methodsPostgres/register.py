@@ -1,4 +1,6 @@
 import psycopg2
+from datetime import date, datetime
+import pytz
 from flask import jsonify, make_response
 
 from extensions.connection import connect
@@ -120,6 +122,38 @@ def obtainRanking():
             for row in rows
         ]
         status['message'] = 'Good Job'
+    except psycopg2.Error as e:
+        status['message'] = str(e)
+        status['error'] = 404
+
+    return make_response(jsonify(status), status['error'])
+
+
+def obtainInfoEnsayo(idGale):
+    status = {
+        'error': 202,
+        'message': '',
+        'data': []
+    }
+    try:
+        conn = connect()  # Establish a connection to your database
+        cur = conn.cursor()
+        cur.execute('select * from get_ensayoinfo(%s);', (idGale,))
+        rows = cur.fetchall()
+        if rows > 0:
+            zona_horaria_guatemala = pytz.timezone('America/Guatemala')
+            today = datetime.now(zona_horaria_guatemala).date()
+            status['data'] = [
+                {
+                    'pesado': row[0],
+                    'edad': str(today-row[1])
+                }
+                for row in rows
+            ]
+            status['message'] = 'Good Job'
+        else:
+            status['data'] =['Vacio']
+            status['message'] = 'Vacio'
     except psycopg2.Error as e:
         status['message'] = str(e)
         status['error'] = 404

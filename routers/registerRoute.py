@@ -59,3 +59,15 @@ def obtainTrabajador():
 @register_bp.route('/obtainRanking', methods=['GET'])
 def obtainRank():
     return obtainRanking()
+
+
+@register_bp.route('/obtainInfoEnsayo', methods=['POST'])
+def obtainInfEnsa():
+    res = request.get_json()
+    if 'id_gale' not in res:
+        return make_response(jsonify(
+            {'message': 'Error al colocar los datos debias mandar como parametros id_gale'}, 404))
+
+    idg = res['id_gale']
+    return obtainInfoEnsayo(str(idg))
+
