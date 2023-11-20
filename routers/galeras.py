@@ -61,3 +61,5 @@ def obtainGaleriarsW():
     status = obtainGalerasZ()
 
     return make_response(jsonify(status), status['error'])
+
+

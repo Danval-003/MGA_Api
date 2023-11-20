@@ -54,3 +54,8 @@ def obtainRegisterDate():
 @register_bp.route('/obtainTrabajadores', methods=['GET'])
 def obtainTrabajador():
     return obtainTrabajadores()
+
+
+@register_bp.route('/obtainRanking', methods=['GET'])
+def obtainTrabajador():
+    return obtainRanking()

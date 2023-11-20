@@ -98,3 +98,31 @@ def obtainTrabajadores():
         status['error'] = 404
 
     return make_response(jsonify(status), status['error'])
+
+
+def obtainRanking():
+    status = {
+        'error': 202,
+        'message': '',
+        'data': []
+    }
+    try:
+        conn = connect()  # Establish a connection to your database
+        cur = conn.cursor()
+        cur.execute('select * from rankingD();')
+        rows = cur.fetchall()
+        status['data'] = [
+            {
+                'nombre': row[0],
+                'avgCA': row[1],
+            }
+            for row in rows
+        ]
+        status['message'] = 'Good Job'
+    except psycopg2.Error as e:
+        status['message'] = str(e)
+        status['error'] = 404
+
+    return make_response(jsonify(status), status['error'])
+
+
