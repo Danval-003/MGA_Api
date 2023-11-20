@@ -57,5 +57,5 @@ def obtainTrabajador():
 
 
 @register_bp.route('/obtainRanking', methods=['GET'])
-def obtainTrabajador():
+def obtainRank():
     return obtainRanking()
