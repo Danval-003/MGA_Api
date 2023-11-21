@@ -2,7 +2,7 @@ from twilio.rest import Client
 
 
 def enviar_sms(trabajador, muertes):
-    with open('../credentials.txt', 'r') as archivo:
+    with open('credentials.txt', 'r') as archivo:
         account_sid = archivo.readline()
         auth_token = archivo.readline()
         twilio_phone_number = archivo.readline()
