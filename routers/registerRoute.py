@@ -22,8 +22,8 @@ def makeRegist():
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_galera y num_lote'}, 404))
     lista = []
-    if res['desesos'] >=5:
-        enviar_sms(str(current_user.get_name_u()),res['desesos'])
+    if res['decesos'] >=5:
+        enviar_sms(str(current_user.get_name_u()),res['decesos'])
 
     for i in parameters:
         lista.append(res[i])
