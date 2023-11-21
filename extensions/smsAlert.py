@@ -8,9 +8,6 @@ def enviar_sms(trabajador, muertes):
         twilio_phone_number = archivo.readline()
     to = '+502 59504420'
     mensaje = f'El trabajador {trabajador} ha reportado {muertes} muertes en su galera.'
-    # Reemplaza con tus credenciales de Twilio
-
-    # Crea un cliente de Twilio
     client = Client(account_sid, auth_token)
 
     try:
