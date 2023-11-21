@@ -20,7 +20,7 @@ def createG():
 
     data = tuple(res['id_lote'], res['no_galera'], res['existencia'], res['tipo_pollo'], res['id_galera'])
 
-    return createGalery(data)
+    return createGaleras(data)
 
 
 # id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio
