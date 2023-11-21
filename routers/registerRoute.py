@@ -3,6 +3,7 @@ from flask_login import login_user, current_user, login_required
 from extensions.rol_identify import only_worker
 from methodsPostgres.register import *
 from extensions.cache import cache
+from extensions.smsAlert import enviar_sms
 
 register_bp = Blueprint('register', __name__)
 
@@ -11,6 +12,7 @@ register_bp = Blueprint('register', __name__)
 @only_worker
 @login_required
 def makeRegist():
+
     res = request.get_json()
     user = current_user.important_data()
     id_tr = str(user['idTrabajador'])
@@ -20,6 +22,9 @@ def makeRegist():
         return make_response(jsonify(
             {'message': 'Error al colocar los datos debias mandar como parametros num_galera y num_lote'}, 404))
     lista = []
+    if res['desesos'] >=5:
+        enviar_sms(str(current_user.get_name_u()),res['desesos'])
+
     for i in parameters:
         lista.append(res[i])
     lista.append(id_tr)
