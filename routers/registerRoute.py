@@ -71,3 +71,14 @@ def obtainInfEnsa():
     idg = res['id_gale']
     return obtainInfoEnsayo(str(idg))
 
+
+@register_bp.route('/finishGale', methods=['POST'])
+def finishS():
+    res = request.get_json()
+    if 'id_gale' not in res:
+        return make_response(jsonify(
+            {'message': 'Error al colocar los datos debias mandar como parametros id_gale'}, 404))
+
+    idg = res['id_gale']
+    return finished(str(idg))
+

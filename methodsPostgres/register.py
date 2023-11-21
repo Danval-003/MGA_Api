@@ -161,3 +161,27 @@ def obtainInfoEnsayo(idGale):
     return make_response(jsonify(status), status['error'])
 
 
+def finished(idGale):
+    status = {
+        'error': 202,
+        'message': '',
+        'data': []
+    }
+    try:
+        conn = connect()  # Establecer una conexión a tu base de datos
+        cur = conn.cursor()
+
+        # Intentar adquirir un bloqueo de fila exclusivo en la tabla galeras_inf
+        # Llamar a la función register dentro de la transacción
+        cur.execute('select * from finishGalery(%s)', (idGale,))
+
+        # Realizar COMMIT ya que hemos adquirido el bloqueo
+        conn.commit()
+
+        status['message'] = 'Good Job'
+    except psycopg2.Error as e:
+        status['message'] = str(e)
+        status['error'] = 404
+
+    return make_response(jsonify(status), status['error'])
+
