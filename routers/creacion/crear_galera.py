@@ -16,9 +16,9 @@ def createG():
 
     zona_horaria_guatemala = pytz.timezone('America/Guatemala')
     today = datetime.now(zona_horaria_guatemala).date()
-    res['id_galera'] = res['id_lote'] + res['no_galera'] + str(today)
+    idGale = res['id_lote'] + res['no_galera'] + str(today)
 
-    data = tuple(res['id_lote'], res['no_galera'], res['existencia'], res['tipo_pollo'], res['id_galera'])
+    data = tuple(res['id_lote'], res['no_galera'], res['existencia'], res['tipo_pollo'], idGale)
 
     return createGaleras(data)
 
