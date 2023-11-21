@@ -167,7 +167,7 @@ def infoGalera(tupleValues):
     return make_response(jsonify(status), status['error'])
 
 
-def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio):
+def createGaleras(data):
     status = {
         'error': 202,
         'message': '',
@@ -177,12 +177,15 @@ def createGaleras(id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trab
         conn = connect()
         cur = conn.cursor()
         cur.execute('''
-        select * from nueva_galera(%s, %s, %s, %s, %s, %s, %s)
-            ''', (id_galera, id_lote, no_galera, existencia, tipo_pollo, id_trabajador, fecha_inicio))
-        cur.fetchall()
+        select * from creargalery(%s, %s, %s, %s, %s)
+            ''', data)
+        rows = cur.fetchall()
+        dat = rows[0][0]
+        if dat == '1':
+            status['message'] = 'Esta galera ya existe'
+        else:
+            status['message'] = 'Galera creada con exito'
         conn.commit()
-
-        status['message'] = 'Good Job'
     except psycopg2.Error as e:
         status['message'] = str(e)
         status['error'] = 404
