@@ -2,12 +2,13 @@ from twilio.rest import Client
 
 
 def enviar_sms(trabajador, muertes):
+    with open('../credentials.txt', 'r') as archivo:
+        account_sid = archivo.readline()
+        auth_token = archivo.readline()
+        twilio_phone_number = archivo.readline()
     to = '+502 59504420'
     mensaje = f'El trabajador {trabajador} ha reportado {muertes} muertes en su galera.'
     # Reemplaza con tus credenciales de Twilio
-    account_sid = 'ACfe510db47f7ac9c65f6166c81a048f2c'
-    auth_token = '2f7254b736083b64638951c3b78920d7'
-    twilio_phone_number = '+14782174439'
 
     # Crea un cliente de Twilio
     client = Client(account_sid, auth_token)
