@@ -10,7 +10,7 @@ lotes_bp = Blueprint('lotes', __name__)
 
 @lotes_bp.route('/lObtain', methods=['GET'])
 def obtainLotes():
-    return obtainLotes()
+    return obtainLotes2()
 
 
 @lotes_bp.route('/loteObtain', methods=['GET'])

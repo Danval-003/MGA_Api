@@ -31,7 +31,7 @@ def obtainLote(tupleValues):
     return make_response(jsonify(status), status['error'])
 
 
-def obtainLotes():
+def obtainLotes2():
     status = {
         'error': 202,
         'message': '',
