@@ -18,7 +18,7 @@ def createG():
     today = datetime.now(zona_horaria_guatemala).date()
     idGale = res['id_lote'] + res['no_galera'] + str(today)
 
-    data = tuple(res['id_lote'], res['no_galera'], res['existencia'], res['tipo_pollo'], idGale)
+    data = tuple([res['id_lote'], res['no_galera'], res['existencia'], res['tipo_pollo'], idGale])
 
     return createGaleras(data)
 
